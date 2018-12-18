@@ -20,7 +20,7 @@ export default {
     }
   },
   created() {
-    this.test()
+    this.getAll()
   },
   methods:{
     getAll(){
