@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql2');
-var mysqlconf = require('../dbConfig')
+var mysqlconf = require('../dbconfig')
 var curd_consumer = require('../curdLib')
 
 var mysqlpool = mysql.createPool(mysqlconf.mysql)
@@ -18,6 +18,15 @@ router.all('*', function(req, res, next) {
 /* GET users listing. */
 router.get('/getAll', function(req, res, next) {
     mysqlpool.query(curd_consumer.getAllConsumer, function(err, rows, fields) {
+        if(err){
+            console.log(err);
+        } else{
+            res.send(rows)
+        }
+     })
+});
+router.post('/searchConsumerEvent', function(req, res, next) {
+    mysqlpool.query(curd_consumer.searchConsumerEvent,[req.body.eventNum], function(err, rows, fields) {
         if(err){
             console.log(err);
         } else{

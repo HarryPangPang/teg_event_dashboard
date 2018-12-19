@@ -8,7 +8,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/Login'
+      redirect: '/PieDashBoard'
       // 利用router的redirect属性来重定向根目录指定路径
     },
     // {
