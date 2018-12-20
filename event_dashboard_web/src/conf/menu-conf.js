@@ -1,24 +1,24 @@
 module.exports = [
     {
-        name: '基础1',
-        id: 'basic',
+        name: '报表可视化',
+        id: 'dashboard1',
         sub: [
-            {
-                name: 'Layout 布局',
+            {   
+                name: '客户分布',
                 componentName: 'PieDashBoard'
             }, {
-                name: 'Container 布局容器',
+                name: '客户分布2',
                 componentName: 'Login'
             }
         ]
     },
     {
-        name: 'Form1',
-        id: 'form',
+        name: '客户信息',
+        id: 'dashboard2',
         sub: [
-            {
-                name: 'Radio 单选框',
-                componentName: 'Login'
+            {   
+                name: '客户信息查找',
+                componentName: 'searchConsuerInfo'
             }, {
                 name: 'Checkbox 多选框',
                 componentName: 'PieDashBoard'

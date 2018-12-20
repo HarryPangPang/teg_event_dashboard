@@ -1,12 +1,12 @@
 <template>
   <div>
-    <el-row>
+    <!-- <el-row>
     <el-col :span="6">
         <el-input placeholder="请输入内容" v-model="searchInfo" class="">
           <el-button slot="append" icon="el-icon-search" @click="checkNameOrPhone"></el-button>
         </el-input>
       </el-col>
-    </el-row>
+    </el-row> -->
     <el-row :gutter="20">
       <!-- 图表start -->
       <div

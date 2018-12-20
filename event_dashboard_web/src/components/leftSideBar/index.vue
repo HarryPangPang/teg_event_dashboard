@@ -15,8 +15,8 @@
           <template slot="title" class="over-hide">
             <span v-text="item.name"></span>
           </template>
-          <el-menu-item-group class="over-hide" v-for="sub in item.sub" :key="sub.name">
-            <el-menu-item :index="sub.componentName" v-text="sub.name">
+          <el-menu-item-group class="over-hide" v-for="sub in item.sub" :key="sub.name"  >
+            <el-menu-item  :index="sub.componentName" v-text="sub.name">
             </el-menu-item>
           </el-menu-item-group>
         </el-submenu>
@@ -38,10 +38,12 @@ export default {
   },
 methods: {
       handleOpen(key, keyPath) {
-        console.log(key, keyPath);
+        // console.log(key, keyPath);
+        return;
       },
       handleClose(key, keyPath) {
-        console.log(key, keyPath);
+        // console.log(key, keyPath);
+        return;
       }
     }
 };
