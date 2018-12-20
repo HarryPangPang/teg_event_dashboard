@@ -1,27 +1,39 @@
 <template>
   <div id="app">
-    <NavHead/>
-    <!-- <pieDashBoard msg="Welcome to Your Vue.js App"/> -->
-    <router-view></router-view>
+    <el-container>
+      <el-container>
+        <el-aside width="200px">
+          <leftSideBar />
+        </el-aside>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
+      </el-container>
+    </el-container>
+
   </div>
 </template>
-
 <script>
-import NavHead from './components/NavHead'
+import leftSideBar from "./components/leftSideBar";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    NavHead
+    leftSideBar
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: "Helvetica Neue", "Segoe UI", Tahoma, Arial, "Hiragino Sans GB", STHeiti, "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif;
+  font-family: "Helvetica Neue", "Segoe UI", Tahoma, Arial, "Hiragino Sans GB",
+    STHeiti, "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
+}
+.el-container{
+  min-height: 100%;
+  overflow: hidden;
 }
 </style>

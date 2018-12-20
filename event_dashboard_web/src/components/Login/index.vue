@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "NavHead",
+  name: "login",
   data() {
     return {
         msg:'欢迎进入'
