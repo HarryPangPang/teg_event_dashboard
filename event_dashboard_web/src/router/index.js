@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import PieDashBoard from '../components/PieDashBoard'
+import ConsumerDashBoard from '../components/ConsumerDashBoard'
 import searchConsuerInfo from '../components/searchConsuerInfo'
 import Login from '../components/Login'
 Vue.use(Router)
@@ -9,7 +9,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/PieDashBoard',
+      redirect: '/ConsumerDashBoard',
       // 利用router的redirect属性来重定向根目录指定路径
     },
     {
@@ -18,9 +18,9 @@ export default new Router({
       component: searchConsuerInfo
     },
     {
-      path: '/PieDashBoard',
-      name:'PieDashBoard',
-      component: PieDashBoard
+      path: '/ConsumerDashBoard',
+      name:'ConsumerDashBoard',
+      component: ConsumerDashBoard
     }
   ]
 })

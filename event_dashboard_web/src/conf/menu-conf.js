@@ -4,10 +4,10 @@ module.exports = [
         id: 'dashboard1',
         sub: [
             {   
-                name: '客户分布',
-                componentName: 'PieDashBoard'
+                name: '客户图表',
+                componentName: 'ConsumerDashBoard'
             }, {
-                name: '客户分布2',
+                name: '活动图表',
                 componentName: 'Login'
             }
         ]
@@ -17,11 +17,11 @@ module.exports = [
         id: 'dashboard2',
         sub: [
             {   
-                name: '客户信息查找',
+                name: '客户信息',
                 componentName: 'searchConsuerInfo'
             }, {
-                name: 'Checkbox 多选框',
-                componentName: 'PieDashBoard'
+                name: '活动',
+                componentName: 'searchEventInfo'
             }
         ]
     }

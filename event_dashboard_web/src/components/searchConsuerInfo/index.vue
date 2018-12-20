@@ -9,20 +9,12 @@
           <el-button slot="append" icon="el-icon-search" @click="checkNameOrPhone"></el-button>
         </el-input>
       </el-col>
-      <el-col :span="3" class="search-label">
-        <span>我要找活动</span>
-      </el-col>
-      <el-col :span="7">
-        <el-input placeholder="请输入活动编号" v-model="geteventNum" class="">
-          <el-button slot="append" icon="el-icon-search" @click="searchByName"></el-button>
-        </el-input>
-      </el-col>
       <el-col :span="2">
         <el-button icon="el-icon-refresh" @click="reset">重置</el-button>
       </el-col>
       
     </el-row>
-  <!-- <el-table v-if="hasConsunerInfoResult"
+  <el-table v-if="hasConsunerInfoResult"
     :data="searchConsumerInfoRes"
     border
     style="width: 100%">
@@ -67,46 +59,6 @@
       label="comment"
       width="">
     </el-table-column>
-  </el-table> -->
-    <el-table v-if="hasConsunerEventInfoResult"
-    :data="searchEventInfoRes"
-    border
-    style="width: 100%">
-    <el-table-column
-      prop="event_num"
-      label="event_num"
-      width="120">
-    </el-table-column>
-    <el-table-column
-      prop="event_date"
-      label="event_date"
-      width="100">
-    </el-table-column>
-    <el-table-column
-      prop="event_location"
-      label="event_location"
-      width="50">
-    </el-table-column>
-    <el-table-column
-      prop="event_training_type"
-      label="event_training_type"
-      width="120">
-    </el-table-column>
-    <el-table-column
-      prop="event_trainer"
-      label="event_trainer"
-      width="200">
-    </el-table-column>
-    <el-table-column
-      prop="event_applicant"
-      label="event_applicant"
-      width="120">
-    </el-table-column>
-    <el-table-column
-      prop="event_address"
-      label="event_address"
-      width="">
-    </el-table-column>
   </el-table>
   </div>
 
@@ -121,10 +73,7 @@ export default {
     return {
       searchInfo:'',
       searchConsumerInfoRes:'',
-      geteventNum:'',
-      searchEventInfoRes:'',
       hasConsunerInfoResult:false,
-      hasConsunerEventInfoResult:false
     };
   },
   created() {
@@ -136,7 +85,7 @@ export default {
   methods: {
     reset(){
       this.searchConsumerInfoRes = '';
-      this.searchEventInfoRes = ''
+      this.searchInfo= ''
     },
     handleClick(row) {
         console.log(row);
@@ -150,7 +99,6 @@ export default {
         let nameReg = /^[\u4e00-\u9fa5]{1,7}$|^[\dA-Za-z_]{1,14}$/;
          if (phoneReg.test(this.searchInfo)) {
            let searchItem = this.searchInfo
-           console.log(searchItem)
            this.searchByPhone(searchItem)
             // console.log('手机号')
           } else if(nameReg.test(this.searchInfo)){
@@ -166,17 +114,8 @@ export default {
          phoneNum : searchItem
         }
         this.$axios.post(eventApi.searchConsumerInfoByPhone,OsearchItem).then(response => {
-          this.hasConsunerEventInfoResult= true;
-          this.searchConsumerInfoRes=response.data;
-        });
-    },
-    searchByName(){  
-        let OsearchItem = {
-         eventNum : this.geteventNum
-        }
-        this.$axios.post(eventApi.searchConsumerEvent,OsearchItem).then(response => {
           this.hasConsunerInfoResult= true;
-          this.searchEventInfoRes=response.data;
+          this.searchConsumerInfoRes=response.data;
         });
     }
   }
