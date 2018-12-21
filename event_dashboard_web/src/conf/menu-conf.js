@@ -8,7 +8,7 @@ module.exports = [
                 componentName: 'ConsumerDashBoard'
             }, {
                 name: '活动图表',
-                componentName: 'Login'
+                componentName: 'eventDashboard'
             }
         ]
     },
@@ -18,7 +18,7 @@ module.exports = [
         sub: [
             {   
                 name: '客户信息',
-                componentName: 'searchConsuerInfo'
+                componentName: 'searchConsumerInfo'
             }, {
                 name: '活动',
                 componentName: 'searchEventInfo'

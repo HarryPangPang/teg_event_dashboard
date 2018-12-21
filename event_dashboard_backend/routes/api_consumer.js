@@ -26,6 +26,16 @@ router.get('/getAllgetAllConsumer', function(req, res, next) {
         }
      })
 });
+// 获取所有活动
+router.get('/getAllEvent', function(req, res, next) {
+    mysqlpool.query(curd_consumer.getAllEvent, function(err, rows, fields) {
+        if(err){
+            console.log(err);
+        } else{
+            res.send(rows)
+        }
+     })
+});
 // 根据活动编号查询活动信息
 router.post('/searchConsumerEvent', function(req, res, next) {
     mysqlpool.query(curd_consumer.searchConsumerEvent,req.body.eventNum, function(err, rows, fields) {

@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import ConsumerDashBoard from '../components/ConsumerDashBoard'
-import searchConsuerInfo from '../components/searchConsuerInfo'
-import Login from '../components/Login'
+import searchConsumerInfo from '../components/searchConsumerInfo'
+import eventDashboard from '../components/eventDashboard'
 Vue.use(Router)
 // 路由配置
 export default new Router({
@@ -13,14 +13,19 @@ export default new Router({
       // 利用router的redirect属性来重定向根目录指定路径
     },
     {
-      path: '/searchConsuerInfo',
-      name:'searchConsuerInfo',
-      component: searchConsuerInfo
+      path: '/searchConsumerInfo',
+      name:'searchConsumerInfo',
+      component: searchConsumerInfo
     },
     {
       path: '/ConsumerDashBoard',
       name:'ConsumerDashBoard',
       component: ConsumerDashBoard
+    },
+    {
+      path: '/eventDashboard',
+      name:'eventDashboard',
+      component: eventDashboard
     }
   ]
 })

@@ -67,7 +67,7 @@
 <script>
 import eventApi from "../../api/api.js";
 export default {
-  name: "searchConsuerInfo",
+  name: "searchConsumerInfo",
   props: {},
   data() {
     return {
