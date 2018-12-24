@@ -24,6 +24,7 @@ export default {
   },
   created() {
     this.getAllData();
+    this.getAllConsumer();
   },
   mounted() {
     this.drawLine();
@@ -36,14 +37,14 @@ export default {
         return 0;
       }
     },
-    // getAllConsumer() {
-    //   return new Promise(resolve => {
-    //     this.$axios.get(eventApi.getAllUsers).then(response => {
-    //       let allConsumer = response.data;
-    //       resolve(allConsumer);
-    //     });
-    //   });
-    // },
+    getAllConsumer() {
+      return new Promise(resolve => {
+        this.$axios.get(eventApi.getAllUsers).then(response => {
+          let allConsumer = response.data;
+          resolve(allConsumer);
+        });
+      });
+    },
     getAllEvent() {
       return new Promise(resolve => {
         this.$axios.get(eventApi.getAllEvent).then(response => {
@@ -52,20 +53,20 @@ export default {
         });
       });
     },
-    getMonthBetween(sdate,edate){  
-      let syear = parseInt(sdate.split('-')[0], 10), smonth = parseInt(sdate.split('-')[1], 10);
-      let eyear = parseInt(edate.split('-')[0], 10), emonth = parseInt(edate.split('-')[1], 10);
-      let  sdateEdateArr= [];
+    // getMonthBetween(sdate,edate){  
+    //   let syear = parseInt(sdate.split('-')[0], 10), smonth = parseInt(sdate.split('-')[1], 10);
+    //   let eyear = parseInt(edate.split('-')[0], 10), emonth = parseInt(edate.split('-')[1], 10);
+    //   let  sdateEdateArr= [];
       // 保证sdate <= edate
-      while((syear * 12 + smonth) <= (eyear * 12 + emonth)){
-        sdateEdateArr.push(syear + ('0' + smonth).slice(-2));
-        if(++smonth > 12){
-          syear++;
-          smonth = 1;
-        }
-      }
-      return sdateEdateArr;
-    },
+    //   while((syear * 12 + smonth) <= (eyear * 12 + emonth)){
+    //     sdateEdateArr.push(syear + ('0' + smonth).slice(-2));
+    //     if(++smonth > 12){
+    //       syear++;
+    //       smonth = 1;
+    //     }
+    //   }
+    //   return sdateEdateArr;
+    // },
     filteEventDate(dateArr){
       // 活动两段日期的中间所有年月份
       // let YMlineXTmp =  [];
