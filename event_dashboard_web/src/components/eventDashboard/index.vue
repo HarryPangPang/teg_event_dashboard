@@ -18,7 +18,8 @@ export default {
   props: {},
   data() {
     return {
-      YMlineX: []
+      YMlineX: [],
+      countEventNum:[]
     };
   },
   created() {
@@ -55,6 +56,7 @@ export default {
       let syear = parseInt(sdate.split('-')[0], 10), smonth = parseInt(sdate.split('-')[1], 10);
       let eyear = parseInt(edate.split('-')[0], 10), emonth = parseInt(edate.split('-')[1], 10);
       let  sdateEdateArr= [];
+      // 保证sdate <= edate
       while((syear * 12 + smonth) <= (eyear * 12 + emonth)){
         sdateEdateArr.push(syear + ('0' + smonth).slice(-2));
         if(++smonth > 12){
@@ -65,28 +67,57 @@ export default {
       return sdateEdateArr;
     },
     filteEventDate(dateArr){
-      let YMlineXTmp =  [];
-      dateArr.forEach(item => {
-      let indexxie  = item.event_date.lastIndexOf('-')
-        YMlineXTmp.push(item.event_date.substr(0,indexxie))
-      });
-      this.YMlineX = new Set(YMlineXTmp)
-      let YMlineX = [...this.YMlineX]
-      // console.log(YMlineX)
-      let DrawLineImageData = {
-        EventDate:'',
-        EventNum: ''
-      }
-      let DrawLineImageDataArr = this.getMonthBetween(YMlineX[0],YMlineX[YMlineX.length-1]);
-      this.YMlineX = DrawLineImageDataArr
-      console.log(DrawLineImageDataArr)
+      // 活动两段日期的中间所有年月份
+      // let YMlineXTmp =  [];
+      // dateArr.forEach(item => {
+      // let indexxie  = item.event_date.lastIndexOf('-')
+      //   YMlineXTmp.push(item.event_date.substr(0,indexxie))
+      // });
+      // this.YMlineX = new Set(YMlineXTmp)
+      // let YMlineX = [...this.YMlineX]
+     
+      // let DrawLineImageXArr = this.getMonthBetween(YMlineX[0],YMlineX[YMlineX.length-1]);
+      // this.YMlineX = DrawLineImageXArr
 
+      // 将所有活动数据的日期格式化
+      let datetmp1Arr = [];
+      dateArr.forEach(item =>{
+        let yeardatetmp1 = parseInt(item.event_date.split('-')[0], 10);
+        let monthdatetmp1 = parseInt(item.event_date.split('-')[1], 10);
+        let datetmp1 = yeardatetmp1 + ('0' + monthdatetmp1).slice(-2);
+        datetmp1Arr.push(datetmp1);
+      })
+
+      var newArr = [];
+      // var countEventNum = [];
+      //使用set进行数组去重,查重去重并统计重复项
+      newArr = [...new Set(datetmp1Arr)];
+      var newarr2 = new Array(newArr.length);
+      for(var t = 0; t < newarr2.length; t++) {
+      newarr2[t] = 0;
+      }
+      for(var p = 0; p < newArr.length; p++) {
+      for(var j = 0; j < datetmp1Arr.length; j++) {
+        if(newArr[p] == datetmp1Arr[j]) {
+          newarr2[p]++;
+        }
+      }
+      }
+      for(var m = 0; m < newArr.length; m++) {
+        this.countEventNum.push(newarr2[m])
+        this.YMlineX.push(newArr[m])
+      // console.log(newArr[m] + "重复的次数为：" + newarr2[m]);
+      }
+      // console.log(this.YMlineX)
     },
+
     async getAllData() {
       let dateArr = await this.getAllEvent()
       await this.filteEventDate(dateArr);
       await this.drawLine();
     },
+
+    // 画echarts
     drawLine() {
       return new Promise(resolve => {
         // 基于准备好的dom，初始化echarts实例
@@ -165,13 +196,13 @@ export default {
               {
                   name:'场次',
                   type:'bar',
-                  data:[10,30,40]
+                  data:this.countEventNum
               },
               {
                   name:'人数',
                   type:'line',
                   yAxisIndex: 1,
-                  data:[30,90]
+                  data:[10,20,200,20,30]
               }
           ]
         });
