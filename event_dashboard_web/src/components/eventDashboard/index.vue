@@ -24,40 +24,30 @@ export default {
   },
   created() {
     this.getAllData();
-    this.getAllConsumer();
   },
   mounted() {
     this.drawLine();
   },
   methods: {
-    checkPhone(usefulPhone) {
-      if (/^1[345789]\d{9}$/.test(usefulPhone)) {
-        return 1;
-      } else {
-        return 0;
-      }
-    },
     getAllConsumer() {
       return new Promise(resolve => {
         this.$axios.get(eventApi.getAllUsers).then(response => {
-          let allConsumer = response.data;
-          resolve(allConsumer);
+          resolve(response.data);
         });
       });
     },
     getAllEvent() {
       return new Promise(resolve => {
         this.$axios.get(eventApi.getAllEvent).then(response => {
-          let allEvents = response.data;
-          resolve(allEvents);
+          resolve(response.data);
         });
       });
     },
+
     // getMonthBetween(sdate,edate){  
     //   let syear = parseInt(sdate.split('-')[0], 10), smonth = parseInt(sdate.split('-')[1], 10);
     //   let eyear = parseInt(edate.split('-')[0], 10), emonth = parseInt(edate.split('-')[1], 10);
     //   let  sdateEdateArr= [];
-      // 保证sdate <= edate
     //   while((syear * 12 + smonth) <= (eyear * 12 + emonth)){
     //     sdateEdateArr.push(syear + ('0' + smonth).slice(-2));
     //     if(++smonth > 12){
@@ -67,10 +57,12 @@ export default {
     //   }
     //   return sdateEdateArr;
     // },
-    filteEventDate(dateArr){
+    
+    
+    filteEventDate(allEvent){
       // 活动两段日期的中间所有年月份
       // let YMlineXTmp =  [];
-      // dateArr.forEach(item => {
+      // allEvent.forEach(item => {
       // let indexxie  = item.event_date.lastIndexOf('-')
       //   YMlineXTmp.push(item.event_date.substr(0,indexxie))
       // });
@@ -82,7 +74,7 @@ export default {
 
       // 将所有活动数据的日期格式化
       let datetmp1Arr = [];
-      dateArr.forEach(item =>{
+      allEvent.forEach(item =>{
         let yeardatetmp1 = parseInt(item.event_date.split('-')[0], 10);
         let monthdatetmp1 = parseInt(item.event_date.split('-')[1], 10);
         let datetmp1 = yeardatetmp1 + ('0' + monthdatetmp1).slice(-2);
@@ -109,12 +101,16 @@ export default {
         this.YMlineX.push(newArr[m])
       // console.log(newArr[m] + "重复的次数为：" + newarr2[m]);
       }
-      // console.log(this.YMlineX)
     },
-
+    filterEventConsumerNum(allConsumer,allEvent){
+      // console.log(allConsumer[0])
+    },
+    // 异步获取所有数据
     async getAllData() {
-      let dateArr = await this.getAllEvent()
-      await this.filteEventDate(dateArr);
+      let allEvent = await this.getAllEvent()
+      let allConsumer  = await this.getAllConsumer()
+      await this.filteEventDate(allEvent);
+      await this.filterEventConsumerNum(allConsumer,allEvent)
       await this.drawLine();
     },
 
