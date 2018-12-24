@@ -5,7 +5,7 @@
       <div id="eventLineCharts" class="useful-mobile-pie"></div>
     </el-row>
     <el-row>
-      活动城市分布图
+      活动图表
       <div id="eventLineCharts" class="useful-mobile-pie"></div>
     </el-row>
   </div>
@@ -51,36 +51,27 @@ export default {
         });
       });
     },
-    getMonthBetween(sdate,edate){  
-      let syear = parseInt(sdate.split('-')[0], 10), smonth = parseInt(sdate.split('-')[1], 10);
-      let eyear = parseInt(edate.split('-')[0], 10), emonth = parseInt(edate.split('-')[1], 10);
-      let  sdateEdateArr= [];
-      while((syear * 12 + smonth) <= (eyear * 12 + emonth)){
-        sdateEdateArr.push(syear + ('0' + smonth).slice(-2));
-        if(++smonth > 12){
-          syear++;
-          smonth = 1;
-        }
-      }
-      return sdateEdateArr;
-    },
+    // filterUsefulMobile(telArr) {
+    //   var usefulMobileConsumer = [];
+    //   var unUsefulMobileConsumer = [];
+    //   telArr.forEach(item => {
+    //     if (this.checkPhone(item.contact_info1) == 1) {
+    //       usefulMobileConsumer.push(item);
+    //     } else {
+    //       unUsefulMobileConsumer.push(item);
+    //     }
+    //   });
+    //   this.usefulPhoneNum = usefulMobileConsumer.length;
+    //   this.unUsefulPhoneNum = unUsefulMobileConsumer.length;
+    // },
     filteEventDate(dateArr){
       let YMlineXTmp =  [];
       dateArr.forEach(item => {
-      let indexxie  = item.event_date.lastIndexOf('-')
+      let indexxie  = item.event_date.lastIndexOf('/')
         YMlineXTmp.push(item.event_date.substr(0,indexxie))
       });
-      this.YMlineX = new Set(YMlineXTmp)
-      let YMlineX = [...this.YMlineX]
-      // console.log(YMlineX)
-      let DrawLineImageData = {
-        EventDate:'',
-        EventNum: ''
-      }
-      let DrawLineImageDataArr = this.getMonthBetween(YMlineX[0],YMlineX[YMlineX.length-1]);
-      this.YMlineX = DrawLineImageDataArr
-      console.log(DrawLineImageDataArr)
-
+      let YMlineX  = new Set(YMlineXTmp)
+       this.YMlineX = YMlineX
     },
     async getAllData() {
       let dateArr = await this.getAllEvent()
@@ -88,6 +79,7 @@ export default {
       await this.drawLine();
     },
     drawLine() {
+      let aa = this.YMlineX
       return new Promise(resolve => {
         // 基于准备好的dom，初始化echarts实例
         let eventLineCharts = this.$echarts.init(
@@ -133,7 +125,7 @@ export default {
           xAxis: [
               {
                   type: 'category',
-                  data: [...this.YMlineX],
+                  data: this.YMlineX,
                   axisPointer: {
                       type: 'shadow'
                   }
