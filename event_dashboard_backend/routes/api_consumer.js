@@ -14,6 +14,8 @@ var mysqlpool = mysql.createPool(mysqlconf.mysql)
 //     res.header("Content-Type", "application/json;charset=utf-8");
 //     next();
 // });
+
+// 获得所有获得
 function _getAllEvent (){
     return new Promise(resolve =>{
         mysqlpool.query(curd_consumer.getAllEvent, function(err, rows, fields) {
@@ -22,10 +24,12 @@ function _getAllEvent (){
                 return;
             } else{
                 resolve(rows)
+                // console.log('get all event')
             }
          });
     })
 }
+// 获得所有客户
 function _getAllConsumer (){
     return new Promise(resolve =>{
         mysqlpool.query(curd_consumer.getAllConsumer, function(err, rows, fields) {
@@ -33,10 +37,48 @@ function _getAllConsumer (){
                 console.log(err);
                 return;
             } else{
-                resolve(fields)
+                resolve(rows)
+                // console.log('get all consumer')
             }
          });
     })
+}
+// 模糊查询某活动来了多少人
+function _getConsumerCameWhichEvent (_eventNum){
+    let _eventNumS = `%${_eventNum}%`
+    let _eventNumSRes = ''
+    // return new Promise(resolve =>{
+        mysqlpool.query(curd_consumer.getConsumerCameWhichEvent, _eventNumS,function(err, rows, fields) {
+            if(err){
+                console.log(err);
+                return;
+            } else{
+                return rows
+                  // console.log('get Consumer Came Which Event')
+            }
+         });
+        
+    // })
+}
+
+function _aaa(){
+    let _allEvents = []
+    let consumerCameEventList = {
+        eventName:'',
+        cameNum:0
+    }
+    console.log(_getConsumerCameWhichEvent('15160267')())
+    // _getAllEvent().then(res => {
+    //     res.forEach(item => {
+    //         let consumerCameEventListLength = _getConsumerCameWhichEvent(item.event_num)
+    //         consumerCameEventList = {
+    //             eventName:item.event_num,
+    //             cameNum: consumerCameEventListLength.length
+    //         }
+    //        console.log(consumerCameEventList)
+    //        _allEvents.push(consumerCameEventList)
+    //     });
+    // })
 }
 
 // 获取所有人员信息
@@ -54,15 +96,13 @@ router.get('/getAllEvent', function(req, res, next) {
 
 // 查询每个月参加活动的人数
 router.get('/getAllEventMemberNum', function(req, res, next) {
-    
-
-
-    (async function getAllEventMemberNum(){
-        
-        // let _allConsumer = await _getAllConsumer();
-        let _allEvent = await _getAllEvent();
-        // console.log(_allEvent.length);
-    })()
+    // (async function getAllEventMemberNum(){
+    //     let _a = await _getAllConsumer();
+    //     let _b = await _getAllEvent();
+    //     let _c = await _getConsumerCameWhichEvent('15160267')
+    //     await res.send(_c)
+    // })()
+    _aaa()
 
 });
 // 根据活动编号查询活动信息
