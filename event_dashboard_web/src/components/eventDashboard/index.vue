@@ -43,7 +43,8 @@ export default {
         });
       });
     },
-
+    
+    // 获取两段日期内的所有年月
     // getMonthBetween(sdate,edate){  
     //   let syear = parseInt(sdate.split('-')[0], 10), smonth = parseInt(sdate.split('-')[1], 10);
     //   let eyear = parseInt(edate.split('-')[0], 10), emonth = parseInt(edate.split('-')[1], 10);
@@ -57,7 +58,6 @@ export default {
     //   }
     //   return sdateEdateArr;
     // },
-    
     
     filteEventDate(allEvent){
       // 活动两段日期的中间所有年月份

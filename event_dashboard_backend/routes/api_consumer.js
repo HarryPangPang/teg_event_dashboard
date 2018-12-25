@@ -14,27 +14,56 @@ var mysqlpool = mysql.createPool(mysqlconf.mysql)
 //     res.header("Content-Type", "application/json;charset=utf-8");
 //     next();
 // });
-
+function _getAllEvent (){
+    return new Promise(resolve =>{
+        mysqlpool.query(curd_consumer.getAllEvent, function(err, rows, fields) {
+            if(err){
+                console.log(err);
+                return;
+            } else{
+                resolve(rows)
+            }
+         });
+    })
+}
+function _getAllConsumer (){
+    return new Promise(resolve =>{
+        mysqlpool.query(curd_consumer.getAllConsumer, function(err, rows, fields) {
+            if(err){
+                console.log(err);
+                return;
+            } else{
+                resolve(fields)
+            }
+         });
+    })
+}
 
 // 获取所有人员信息
 router.get('/getAllgetAllConsumer', function(req, res, next) {
-    mysqlpool.query(curd_consumer.getAllConsumer, function(err, rows, fields) {
-        if(err){
-            console.log(err);
-        } else{
-            res.send(rows)
-        }
-     })
+    _getAllConsumer().then(data=>{
+        res.send(data)
+    })
 });
 // 获取所有活动
 router.get('/getAllEvent', function(req, res, next) {
-    mysqlpool.query(curd_consumer.getAllEvent, function(err, rows, fields) {
-        if(err){
-            console.log(err);
-        } else{
-            res.send(rows)
-        }
-     })
+    _getAllEvent().then(data=>{
+        res.send(data)
+    })
+});
+
+// 查询每个月参加活动的人数
+router.get('/getAllEventMemberNum', function(req, res, next) {
+    
+
+
+    (async function getAllEventMemberNum(){
+        
+        // let _allConsumer = await _getAllConsumer();
+        let _allEvent = await _getAllEvent();
+        // console.log(_allEvent.length);
+    })()
+
 });
 // 根据活动编号查询活动信息
 router.post('/searchConsumerEvent', function(req, res, next) {
