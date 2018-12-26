@@ -103,7 +103,9 @@ export default {
       }
     },
     filterEventConsumerNum(allConsumer,allEvent){
-      // console.log(allConsumer[0])
+      allEvent.forEach((element,index) => {
+        element.event_num
+      });
     },
     // 异步获取所有数据
     async getAllData() {
