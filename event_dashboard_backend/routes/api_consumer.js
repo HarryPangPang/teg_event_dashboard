@@ -14,7 +14,14 @@ var mysqlpool = mysql.createPool(mysqlconf.mysql)
 //     res.header("Content-Type", "application/json;charset=utf-8");
 //     next();
 // });
-
+var localStorage;
+function _defineLocalStorage() {
+    if (typeof localStorage === "undefined" || localStorage === null) {
+        var LocalStorage = require('node-localstorage').LocalStorage;
+        localStorage = new LocalStorage('./scratch');
+    }
+}
+_defineLocalStorage()
 // 获得所有活动
 function _getAllEvent() {
     return new Promise(resolve => {
@@ -46,73 +53,69 @@ function _getAllConsumer() {
 
 // 模糊查询某活动来了多少人
 function _getConsumerCameWhichEvent(_eventNum) {
-    let _eventNumS = `%${_eventNum}%`
-    let _ConsumerCameWhichEvent = ''
-    // return new Promise(resolve =>{
-    mysqlpool.query(curd_consumer.getConsumerCameWhichEvent, _eventNumS, function (err, rows, fields) {
+    return new Promise(resolve =>{
+    mysqlpool.query(curd_consumer.getConsumerCameWhichEvent, _eventNum, function (err, rows, fields) {
         if (err) {
             console.log(err);
             return;
         } else {
-            _ConsumerCameWhichEvent = rows
-            return _ConsumerCameWhichEvent
+            resolve(rows)
             // console.log('get Consumer Came Which Event')
         }
     })
-
-    // })
-}
-
-// 模糊查询某活动来了多少人
-function GetConsumerCameWhichEvent(_eventNum) {
-    return new Promise(resolve => {
-        let _eventNumS = `%${_eventNum}%`
-
-        mysqlpool.query(curd_consumer.getConsumerCameWhichEvent, _eventNumS, function (err, rows, fields) {
-            if (err) {
-                console.log(err);
-                return;
-                return res.redirect('/')
-            } else {
-                resolve(rows)
-                // callback(rows)
-            }
-        })
     })
-
 }
 
-// 查询每个月参加活动的人数
+// 模糊查询某活动来了谁
+router.post('/getEvenrCamers', function (req, res, next) {
+    _getConsumerCameWhichEvent(req.body.eventNum).then((data)=>{
+        res.send(data)
+    })
+})
+
+// 查询每个月参加活动的人数(fail)
 router.get('/getAllEventMemberNum', function (req, res, next) {
-
-
-    // var _getConsumerCameToWhichEvent = new GetConsumerCameWhichEvent('15160267', getAllEventMemberNum)
-    // function getAllEventMemberNum(rowsData){
-    //     consumerCameEventList.cameNum = rowsData.length;
-    // }
-
     _getAllEvent().then(resp => {
-        var empArr = []
-        let timeClock = 0
-        for (var index = 0; index < resp.length; index++) {
-            let resEventNUm = resp[index].event_num
-            _eventNumS = `%${resEventNUm}%`
-            mysqlpool.query(curd_consumer.getConsumerCameWhichEvent, _eventNumS, function (err, rows, fields) {
-                if (err) {
-                    return;
-                } else
-                     {
-                        timeClock++
-                        empArr[index] = {},
-                        empArr[index].a = resEventNUm
-                        empArr[index].b = rows.length
+        var allEvent = resp;
+        var allEventNum = []
+        var beginTime = +new Date();
+        var querySpendTime = ''
+        function aa() {
+            return new Promise(resolve => {
+                for (var i = 0, tpmallEventlen = allEvent.length; i < tpmallEventlen; i++) {
+                    let allEventNumItem = {
+                        eventNum: allEvent[i].event_num,
+                        memberNum: 0
                     }
+                    mysqlpool.query(curd_consumer.getConsumerCameWhichEvent, allEvent[i].event_num, function (err, rows, fields) {
+                        if (err) {
+                            console.log(err)
+                        } else if (allEventNum.length === tpmallEventlen - 1) {
+                            // console.log('ok')
+                            resolve(allEventNum)
+                        } else {
+                            allEventNumItem.memberNum = rows.length
+                            allEventNum.push(allEventNumItem)
+                        }
+                    })
+                }
             })
-            // console.log(timeClock)
         }
-        setTimeout(() => {
-            console.log(empArr)
-        }, 5000);
+        aa().then(reson => {
+            res.send(reson)
+
+            // 如果需要时间戳
+            //         设置localstorage获取时间戳s
+            //           localStorage.removeItem('querySpendTime')
+            //           localStorage.setItem('querySpendTime', querySpendTime);
+            //         设置localstorage获取时间戳e           
+            // let _get_querySpendTime = Number(localStorage.getItem('querySpendTime')) + 100
+            // 延迟获取所有数据
+            // console.log(_get_querySpendTime);
+            // setTimeout(() => {
+            //     console.log(allEventNum)
+            // }, _get_querySpendTime);
+        })
     })
 
 
