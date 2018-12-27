@@ -8,6 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import echarts from 'echarts'
 import router from './router'
 Vue.prototype.$echarts = echarts
+import '../src/assets/main.css'
 import {
   Pagination,
   Dialog,

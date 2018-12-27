@@ -36,4 +36,5 @@ export default {
   min-height: 100%;
   overflow: hidden;
 }
+
 </style>

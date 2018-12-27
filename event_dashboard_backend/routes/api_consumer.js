@@ -73,7 +73,7 @@ router.post('/getEvenrCamers', function (req, res, next) {
     })
 })
 
-// 查询每个月参加活动的人数(fail)
+// 查询每个月参加活动的人数
 router.get('/getAllEventMemberNum', function (req, res, next) {
     _getAllEvent().then(resp => {
         var allEvent = resp;
@@ -85,6 +85,7 @@ router.get('/getAllEventMemberNum', function (req, res, next) {
                 for (var i = 0, tpmallEventlen = allEvent.length; i < tpmallEventlen; i++) {
                     let allEventNumItem = {
                         eventNum: allEvent[i].event_num,
+                        eventDate: allEvent[i].event_date,
                         memberNum: 0
                     }
                     mysqlpool.query(curd_consumer.getConsumerCameWhichEvent, allEvent[i].event_num, function (err, rows, fields) {

@@ -1,5 +1,9 @@
 <template>
-  <div>
+  <div v-loading="loading"
+    element-loading-text="正在努力计算中😵"
+    element-loading-spinner="el-icon-loading"
+    element-loading-background="rgba(0, 0, 0, 0.8)"
+    style="width: 100%">
 <el-row>
       <div
         id="usefulMobilePie"
@@ -18,6 +22,7 @@ export default {
   props: {},
   data() {
     return {
+      loading:true,
       usefulPhoneNum: "",
       unUsefulPhoneNum: "",
       searchInfo:''
@@ -72,8 +77,12 @@ export default {
           unUsefulMobileConsumer.push(item);
         }
       });
+      
       this.usefulPhoneNum = usefulMobileConsumer.length;
       this.unUsefulPhoneNum = unUsefulMobileConsumer.length;
+      if(usefulMobileConsumer.length&&unUsefulMobileConsumer.length){
+        this.loading = false
+      }
     },
     async getAllData() {
       let telArr = await this.getAll();

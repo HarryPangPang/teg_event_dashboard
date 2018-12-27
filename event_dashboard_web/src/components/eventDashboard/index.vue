@@ -1,5 +1,9 @@
 <template>
-  <div>
+  <div v-loading="loading"
+    element-loading-text="正在努力计算中😵"
+    element-loading-spinner="el-icon-loading"
+    element-loading-background="rgba(0, 0, 0, 0.8)"
+    style="width: 100%">
     <el-row>
       YTD活动场次及人数
       <div id="eventLineCharts" class="useful-mobile-pie"></div>
@@ -18,8 +22,10 @@ export default {
   props: {},
   data() {
     return {
+      loading:true,
       YMlineX: [],
-      countEventNum:[]
+      countEventNum:[],
+      countEventGuest:[]
     };
   },
   created() {
@@ -29,90 +35,106 @@ export default {
     this.drawLine();
   },
   methods: {
-    getAllConsumer() {
-      return new Promise(resolve => {
-        this.$axios.get(eventApi.getAllUsers).then(response => {
-          resolve(response.data);
-        });
-      });
-    },
-    getAllEvent() {
-      return new Promise(resolve => {
-        this.$axios.get(eventApi.getAllEvent).then(response => {
-          resolve(response.data);
-        });
-      });
-    },
-    
-    // 获取两段日期内的所有年月
-    // getMonthBetween(sdate,edate){  
-    //   let syear = parseInt(sdate.split('-')[0], 10), smonth = parseInt(sdate.split('-')[1], 10);
-    //   let eyear = parseInt(edate.split('-')[0], 10), emonth = parseInt(edate.split('-')[1], 10);
-    //   let  sdateEdateArr= [];
-    //   while((syear * 12 + smonth) <= (eyear * 12 + emonth)){
-    //     sdateEdateArr.push(syear + ('0' + smonth).slice(-2));
-    //     if(++smonth > 12){
-    //       syear++;
-    //       smonth = 1;
-    //     }
-    //   }
-    //   return sdateEdateArr;
+    // getAllConsumer() {
+    //   return new Promise(resolve => {
+    //     this.$axios.get(eventApi.getAllUsers).then(response => {
+    //       resolve(response.data);
+    //     });
+    //   });
     // },
-    
+    // getAllEvent() {
+    //   return new Promise(resolve => {
+    //     this.$axios.get(eventApi.getAllEvent).then(response => {
+    //       resolve(response.data);
+    //     });
+    //   });
+    // },
     filteEventDate(allEvent){
-      // 活动两段日期的中间所有年月份
-      // let YMlineXTmp =  [];
-      // allEvent.forEach(item => {
-      // let indexxie  = item.event_date.lastIndexOf('-')
-      //   YMlineXTmp.push(item.event_date.substr(0,indexxie))
-      // });
-      // this.YMlineX = new Set(YMlineXTmp)
-      // let YMlineX = [...this.YMlineX]
-     
-      // let DrawLineImageXArr = this.getMonthBetween(YMlineX[0],YMlineX[YMlineX.length-1]);
-      // this.YMlineX = DrawLineImageXArr
+      return new Promise(resolve=>{
+          var datetOriginArr = []
+          // 把所有日期内的-都去掉，且只保留年月
+          allEvent.forEach(item =>{
+            let yeardatetmp1 = parseInt(item.eventDate.split('-')[0], 10);
+            let monthdatetmp1 = parseInt(item.eventDate.split('-')[1], 10);
+            let datetmp1 = yeardatetmp1 + ('0' + monthdatetmp1).slice(-2);
+            datetOriginArr.push(datetmp1);
+          })
+          //使用set进行数组去重,查重去重并统计重复项
+          var newDateArr = [];
+          newDateArr = [...new Set(datetOriginArr)];
+          //创建一个和newDateArr一样长度的数组newDateArr2
+          var newDateArr2 = new Array(newDateArr.length);
+          // 将数组内的值都设为0
+          for(var t = 0; t < newDateArr2.length; t++) {
+            newDateArr2[t] = 0;
+          }
+          // 计算newDateArr2对应在newDateArr重复的数量
+          for(var p = 0; p < newDateArr.length; p++) {
+            for(var j = 0; j < datetOriginArr.length; j++) {
+              if(newDateArr[p] == datetOriginArr[j]) {
+                newDateArr2[p]++;
+              }
+            }
+          }
+          // 生成x轴和每个月活动的数量
+          // for(var m = 0; m < newDateArr.length; m++) {
+          //   this.countEventNum.push(newDateArr2[m])
+          //   this.YMlineX.push(newDateArr[m])
+          // }
+          // 计算newCountArr对应在newDateArr重复的数量——————————————————————————————
+          // 格式化原有数据的日期，保留YM
+          var allEventsYM = allEvent
 
-      // 将所有活动数据的日期格式化
-      let datetmp1Arr = [];
-      allEvent.forEach(item =>{
-        let yeardatetmp1 = parseInt(item.event_date.split('-')[0], 10);
-        let monthdatetmp1 = parseInt(item.event_date.split('-')[1], 10);
-        let datetmp1 = yeardatetmp1 + ('0' + monthdatetmp1).slice(-2);
-        datetmp1Arr.push(datetmp1);
+          for (var index=0;index<allEventsYM.length;index++){
+          let  yeardatetmp1 = parseInt( allEventsYM[index].eventDate.split('-')[0], 10);
+          let monthdatetmp1 = parseInt(allEventsYM[index].eventDate.split('-')[1], 10);
+          let datetmp1 = yeardatetmp1 + ('0' + monthdatetmp1).slice(-2);
+            allEventsYM[index].eventDate =datetmp1
+          }
+          
+          var newDateArr3 = new Array(newDateArr.length);
+          for(var n = 0; n < newDateArr3.length; n++) {
+            newDateArr3[n] = 0;
+          }
+
+          for(var x=0;x< newDateArr.length;x++){
+            for(var y=0;y<allEventsYM.length;y++ ){
+              if(newDateArr[x] == allEventsYM[y].eventDate){
+                newDateArr3[x] = Number(newDateArr3[x])+Number(allEventsYM[y].memberNum)
+              }
+            }
+          }
+          // newDateArr,newDateArr2,newDateArr3
+          this.YMlineX =  newDateArr
+          this.countEventNum= newDateArr2,
+          this.countEventGuest= newDateArr3
+          let allLineData = {
+            YMlineX:newDateArr,
+            countEventNum:newDateArr2,
+            countEventGuest:newDateArr3
+          }
+          console.log(newDateArr3)
+          resolve(allLineData)
       })
 
-      var newArr = [];
-      // var countEventNum = [];
-      //使用set进行数组去重,查重去重并统计重复项
-      newArr = [...new Set(datetmp1Arr)];
-      var newarr2 = new Array(newArr.length);
-      for(var t = 0; t < newarr2.length; t++) {
-      newarr2[t] = 0;
-      }
-      for(var p = 0; p < newArr.length; p++) {
-      for(var j = 0; j < datetmp1Arr.length; j++) {
-        if(newArr[p] == datetmp1Arr[j]) {
-          newarr2[p]++;
-        }
-      }
-      }
-      for(var m = 0; m < newArr.length; m++) {
-        this.countEventNum.push(newarr2[m])
-        this.YMlineX.push(newArr[m])
-      // console.log(newArr[m] + "重复的次数为：" + newarr2[m]);
-      }
     },
-    filterEventConsumerNum(allConsumer,allEvent){
-      allEvent.forEach((element,index) => {
-        element.event_num
-      });
+
+    filterEventConsumerNum(){
+     return new Promise(resolve=>{
+       this.$axios.get(eventApi.getConsumerSCameWhichEvent).then(response => {
+         if(response.status ==200){
+           this.loading =false;
+          //  console.log(response)
+           resolve(response.data);
+         }
+        });
+     })
     },
     // 异步获取所有数据
     async getAllData() {
-      let allEvent = await this.getAllEvent()
-      let allConsumer  = await this.getAllConsumer()
+      // let allEvent = await this.getAllEvent()
+      let allEvent = await this.filterEventConsumerNum()
       await this.filteEventDate(allEvent);
-      await this.filterEventConsumerNum(allConsumer,allEvent)
       await this.drawLine();
     },
 
@@ -174,8 +196,8 @@ export default {
                   type: 'value',
                   name: '场次',
                   min: 0,
-                  max: 300,
-                  interval: 50,
+                  max: 500,
+                  interval: 100,
                   axisLabel: {
                       formatter: '{value} 次'
                   }
@@ -184,8 +206,8 @@ export default {
                   type: 'value',
                   name: '人数',
                   min: 0,
-                  max: 300,
-                  interval: 50,
+                  max: 2000,
+                  interval: 400,
                   axisLabel: {
                       formatter: '{value} 人'
                   }
@@ -195,13 +217,13 @@ export default {
               {
                   name:'场次',
                   type:'bar',
-                  data:this.countEventNum
+                  data:[...this.countEventNum]
               },
               {
                   name:'人数',
                   type:'line',
                   yAxisIndex: 1,
-                  data:[10,20,200,20,30]
+                  data:[...this.countEventGuest]
               }
           ]
         });
