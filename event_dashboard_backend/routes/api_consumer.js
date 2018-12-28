@@ -77,7 +77,7 @@ router.post('/getEvenrCamers', function (req, res, next) {
     })
 })
 
-// 查询每个月参加活动的人数
+// 创建每个月参加活动的人数的表
 router.get('/getAllEventMemberNum', function (req, res, next) {
     _getAllEvent().then(resp => {
         var allEvent = resp;
@@ -140,6 +140,13 @@ router.get('/getAllEventMemberNum', function (req, res, next) {
     })
 
 
+});
+
+// 获取每个月参加活动的人数的表
+router.get('/getUpdatedgetAllConsumer', function (req, res, next) {
+    _getAllConsumer().then(data => {
+        res.send(data)
+    })
 });
 // 获取所有人员信息
 router.get('/getAllgetAllConsumer', function (req, res, next) {
