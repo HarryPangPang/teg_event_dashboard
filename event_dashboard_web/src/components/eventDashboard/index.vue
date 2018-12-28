@@ -6,11 +6,11 @@
     style="width: 100%">
     <el-row>
       YTD活动场次及人数
-      <div id="eventLineCharts" class="useful-mobile-pie"></div>
+      <div id="eventLineCharts1" class="useful-mobile-pie"></div>
     </el-row>
     <el-row>
       活动城市分布图Top10
-      <div id="eventLineCharts" class="useful-mobile-pie"></div>
+      <div id="eventLineCharts2" class="useful-mobile-pie"></div>
     </el-row>
   </div>
 </template>
@@ -26,6 +26,7 @@ export default {
       YMlineX: [],
       countEventNum:[],
       countEventGuest:[],
+      allEventsRank:[],
       waitingLabel:''
     };
   },
@@ -33,9 +34,23 @@ export default {
     this.getAllData();
   },
   mounted() {
-    this.drawLine();
+    // this.drawLine1();
   },
   methods: {
+    // 获得接口所有整理过数据结构的活动lib
+    getConsumerSCameWhichEvent(){
+      this.waitingLabel = `正在努力计算中预计花费3分钟超过5分钟没有请刷新网页😋`
+      return new Promise(resolve=>{
+        this.$axios.get(eventApi.getConsumerSCameWhichEvent).then(response => {
+          if(response.status ==200){
+            this.loading =false;
+            //  console.log(response)
+            resolve(response.data);
+          }
+          });
+      })
+    },
+    // 过滤整理活动人数场次的数据
     filteEventDate(allEvent){
       return new Promise(resolve=>{
           var datetOriginArr = []
@@ -97,37 +112,54 @@ export default {
           this.countEventNum= newDateArr2,
           this.countEventGuest= newDateArr3
           /* eslint no-console: 0*/
-          console.log(newDateArr3)
+          // console.log(newDateArr3)
           resolve()
       })
 
     },
-
-    filterEventConsumerNum(){
-      this.waitingLabel = `正在努力计算中预计花费3分钟超过5分钟没有请刷新网页😵`
+    //获得活动场次最多的前十的城市
+    filteCityRanking(allEvent){
       return new Promise(resolve=>{
-        this.$axios.get(eventApi.getConsumerSCameWhichEvent).then(response => {
-          if(response.status ==200){
-            this.loading =false;
-            //  console.log(response)
-            resolve(response.data);
+
+        let allOriginEvents = allEvent;
+        let allOriginEventCitys=[]
+        for(var i=0;i<allOriginEvents.length;i++){
+          allOriginEventCitys.push(allOriginEvents[i].eventProvince)
+        }
+        let allEventsRanks = allOriginEventCitys.reduce((cityArr, cityName) => {
+            cityName in cityArr ? cityArr[cityName]++ : (cityArr[cityName] = 1);
+            return cityArr;
+        },{});
+        
+        Object.keys(allEventsRanks).forEach((key)=>{
+          let allEventsRanksArrItem={
+            name:'',
+            value:''
           }
-          });
+          // console.log(allEventsRanksArrItem)
+          allEventsRanksArrItem.name=key
+          allEventsRanksArrItem.value=allEventsRanks[key]
+          this.allEventsRank.push(allEventsRanksArrItem)
+        })
+        console.log(this.allEventsRank)
+        resolve(this.allEventsRank)
       })
     },
     // 异步获取所有数据
     async getAllData() {
-      let allEvent = await this.filterEventConsumerNum()
+      let allEvent = await this.getConsumerSCameWhichEvent()
       await this.filteEventDate(allEvent);
-      await this.drawLine();
+      await this.filteCityRanking(allEvent);
+      await this.drawLine1();
+      await this.drawLine2();
     },
 
     // 画echarts
-    drawLine() {
+    drawLine1() {
       return new Promise(resolve => {
         // 基于准备好的dom，初始化echarts实例
         let eventLineCharts = this.$echarts.init(
-          window.document.getElementById("eventLineCharts")
+          window.document.getElementById("eventLineCharts1")
         );
         // 绘制图表
         eventLineCharts.setOption({
@@ -209,6 +241,43 @@ export default {
                   yAxisIndex: 1,
                   data:[...this.countEventGuest]
               }
+          ]
+        });
+        resolve();
+      });
+    },
+    drawLine2() {
+      return new Promise(resolve => {
+        // 基于准备好的dom，初始化echarts实例
+        let usefulMobilePie = this.$echarts.init(
+          window.document.getElementById("eventLineCharts2")
+        );
+        // 绘制图表
+        usefulMobilePie.setOption({
+          title: {
+            text: "活动城市分布图Top10",
+            subtext: "",
+            x: "center"
+          },
+          tooltip: {
+            trigger: "item",
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+          },
+          series: [
+            {
+              name: "访问来源",
+              type: "pie",
+              radius: "55%",
+              center: ["50%", "60%"],
+              data: [...this.allEventsRank],
+              itemStyle: {
+                emphasis: {
+                  shadowBlur: 10,
+                  shadowOffsetX: 0,
+                  shadowColor: "rgba(0, 0, 0, 0.5)"
+                }
+              }
+            }
           ]
         });
         resolve();

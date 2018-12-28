@@ -1,5 +1,5 @@
 var curd_consumer = {
-    'getAllEvent':'SELECT * FROM 14to19event_lib1',
+    'getAllEvent':'SELECT * FROM 14to19event_lib',
     'getAllConsumer':'SELECT * FROM 1419consumerdata',
     'getConsumerCameWhichEvent': 'SELECT * FROM 1419consumerdata WHERE FIND_IN_SET(?,event_num)',
     // 'getConsumerCameWhichEvent':'SELECT * FROM 1419consumerdata WHERE event_num like ?',
