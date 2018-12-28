@@ -86,13 +86,14 @@ router.get('/getAllEventMemberNum', function (req, res, next) {
                     let allEventNumItem = {
                         eventNum: allEvent[i].event_num,
                         eventDate: allEvent[i].event_date,
+                        eventProvince: allEvent[i].event_province,
                         memberNum: 0
                     }
                     mysqlpool.query(curd_consumer.getConsumerCameWhichEvent, allEvent[i].event_num, function (err, rows, fields) {
                         if (err) {
                             console.log(err)
                         } else if (allEventNum.length === tpmallEventlen - 1) {
-                            // console.log('ok')
+                            // res.send(allEventNumItem)
                             resolve(allEventNum)
                         } else {
                             allEventNumItem.memberNum = rows.length

@@ -1,6 +1,6 @@
 <template>
   <div v-loading="loading"
-    element-loading-text="正在努力计算中😵"
+    :element-loading-text= waitingLabel
     element-loading-spinner="el-icon-loading"
     element-loading-background="rgba(0, 0, 0, 0.8)"
     style="width: 100%">
@@ -9,7 +9,7 @@
       <div id="eventLineCharts" class="useful-mobile-pie"></div>
     </el-row>
     <el-row>
-      活动城市分布图
+      活动城市分布图Top10
       <div id="eventLineCharts" class="useful-mobile-pie"></div>
     </el-row>
   </div>
@@ -25,7 +25,8 @@ export default {
       loading:true,
       YMlineX: [],
       countEventNum:[],
-      countEventGuest:[]
+      countEventGuest:[],
+      waitingLabel:''
     };
   },
   created() {
@@ -35,20 +36,6 @@ export default {
     this.drawLine();
   },
   methods: {
-    // getAllConsumer() {
-    //   return new Promise(resolve => {
-    //     this.$axios.get(eventApi.getAllUsers).then(response => {
-    //       resolve(response.data);
-    //     });
-    //   });
-    // },
-    // getAllEvent() {
-    //   return new Promise(resolve => {
-    //     this.$axios.get(eventApi.getAllEvent).then(response => {
-    //       resolve(response.data);
-    //     });
-    //   });
-    // },
     filteEventDate(allEvent){
       return new Promise(resolve=>{
           var datetOriginArr = []
@@ -81,6 +68,7 @@ export default {
           //   this.countEventNum.push(newDateArr2[m])
           //   this.YMlineX.push(newDateArr[m])
           // }
+          
           // 计算newCountArr对应在newDateArr重复的数量——————————————————————————————
           // 格式化原有数据的日期，保留YM
           var allEventsYM = allEvent
@@ -120,6 +108,7 @@ export default {
     },
 
     filterEventConsumerNum(){
+    this.waitingLabel = `正在努力计算中预计花费3分钟超过5分钟没有请刷新网页😵`
      return new Promise(resolve=>{
        this.$axios.get(eventApi.getConsumerSCameWhichEvent).then(response => {
          if(response.status ==200){
@@ -133,8 +122,8 @@ export default {
     // 异步获取所有数据
     async getAllData() {
       // let allEvent = await this.getAllEvent()
-      let allEvent = await this.filterEventConsumerNum()
-      await this.filteEventDate(allEvent);
+      // let allEvent = await this.filterEventConsumerNum()
+      // await this.filteEventDate(allEvent);
       await this.drawLine();
     },
 
@@ -196,7 +185,7 @@ export default {
                   type: 'value',
                   name: '场次',
                   min: 0,
-                  max: 500,
+                  max: 1000,
                   interval: 100,
                   axisLabel: {
                       formatter: '{value} 次'
@@ -206,8 +195,8 @@ export default {
                   type: 'value',
                   name: '人数',
                   min: 0,
-                  max: 2000,
-                  interval: 400,
+                  max: 10000,
+                  interval: 1000,
                   axisLabel: {
                       formatter: '{value} 人'
                   }
@@ -238,6 +227,9 @@ export default {
 <style scoped>
 .useful-mobile-pie {
   width: 100%;
-  height: 300px;
+  height: 500px;
+}
+.el-loading-mask .el-loading-spinner{
+  top: 0 !important;
 }
 </style>
