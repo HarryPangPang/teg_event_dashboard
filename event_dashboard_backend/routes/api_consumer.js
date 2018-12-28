@@ -14,6 +14,8 @@ var mysqlpool = mysql.createPool(mysqlconf.mysql)
 //     res.header("Content-Type", "application/json;charset=utf-8");
 //     next();
 // });
+
+// 设置localstorage start
 var localStorage;
 function _defineLocalStorage() {
     if (typeof localStorage === "undefined" || localStorage === null) {
@@ -22,6 +24,8 @@ function _defineLocalStorage() {
     }
 }
 _defineLocalStorage()
+// 设置localstorage end
+
 // 获得所有活动
 function _getAllEvent() {
     return new Promise(resolve => {
@@ -51,7 +55,7 @@ function _getAllConsumer() {
     })
 }
 
-// 模糊查询某活动来了多少人
+// 模糊查询某一场活动来了多少人
 function _getConsumerCameWhichEvent(_eventNum) {
     return new Promise(resolve =>{
     mysqlpool.query(curd_consumer.getConsumerCameWhichEvent, _eventNum, function (err, rows, fields) {
@@ -78,8 +82,8 @@ router.get('/getAllEventMemberNum', function (req, res, next) {
     _getAllEvent().then(resp => {
         var allEvent = resp;
         var allEventNum = []
-        var beginTime = +new Date();
-        var querySpendTime = ''
+        // var beginTime = +new Date();
+        // var querySpendTime = ''
         function aa() {
             return new Promise(resolve => {
                 for (var i = 0, tpmallEventlen = allEvent.length; i < tpmallEventlen; i++) {
@@ -104,7 +108,19 @@ router.get('/getAllEventMemberNum', function (req, res, next) {
             })
         }
         aa().then(reson => {
-            res.send(reson)
+            return new Promise((resolve)=>{
+                let resonDate = reson
+                for(var ii=0;ii<resonDate.length;ii++){
+                    let insertAllEventMemberNumTmpsql = `INSERT INTO AllEventMemberNumTmp VALUES(?,?,?,?);`
+                    mysqlpool.query(insertAllEventMemberNumTmpsql, [resonDate[ii].eventNum,resonDate[ii].eventDate,resonDate[ii].eventProvince,resonDate[ii].memberNum],function (err, rows, fields) {
+                        if (err) {
+                            throw err
+                        } else {
+                            resolve('ok')
+                        }
+                    })
+                }
+            })
 
             // 如果需要时间戳
             //         设置localstorage获取时间戳s
@@ -117,6 +133,9 @@ router.get('/getAllEventMemberNum', function (req, res, next) {
             // setTimeout(() => {
             //     console.log(allEventNum)
             // }, _get_querySpendTime);
+
+        }).then((res)=>{
+            res.send(1)
         })
     })
 

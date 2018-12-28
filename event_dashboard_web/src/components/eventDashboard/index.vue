@@ -141,7 +141,7 @@ export default {
           allEventsRanksArrItem.value=allEventsRanks[key]
           this.allEventsRank.push(allEventsRanksArrItem)
         })
-        console.log(this.allEventsRank)
+        // console.log(this.allEventsRank)
         resolve(this.allEventsRank)
       })
     },
