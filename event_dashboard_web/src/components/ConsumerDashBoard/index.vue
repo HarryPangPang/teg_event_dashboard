@@ -50,10 +50,13 @@ export default {
         let phoneReg = /^1[345789]\d{9}$/;
         let nameReg = /^[\u4e00-\u9fa5]{1,7}$|^[\dA-Za-z_]{1,14}$/;
          if (phoneReg.test(this.searchInfo)) {
+           /* eslint no-console: 0*/
             console.log('手机号')
           } else if(nameReg.test(this.searchInfo)){
+            /* eslint no-console: 0*/
             console.log('名字')
           } else{
+            /* eslint no-console: 0*/
             console.log('都不行')
           }
       }

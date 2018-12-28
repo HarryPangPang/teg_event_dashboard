@@ -68,7 +68,7 @@ export default {
           //   this.countEventNum.push(newDateArr2[m])
           //   this.YMlineX.push(newDateArr[m])
           // }
-          
+
           // 计算newCountArr对应在newDateArr重复的数量——————————————————————————————
           // 格式化原有数据的日期，保留YM
           var allEventsYM = allEvent
@@ -96,34 +96,29 @@ export default {
           this.YMlineX =  newDateArr
           this.countEventNum= newDateArr2,
           this.countEventGuest= newDateArr3
-          let allLineData = {
-            YMlineX:newDateArr,
-            countEventNum:newDateArr2,
-            countEventGuest:newDateArr3
-          }
+          /* eslint no-console: 0*/
           console.log(newDateArr3)
-          resolve(allLineData)
+          resolve()
       })
 
     },
 
     filterEventConsumerNum(){
-    this.waitingLabel = `正在努力计算中预计花费3分钟超过5分钟没有请刷新网页😵`
-     return new Promise(resolve=>{
-       this.$axios.get(eventApi.getConsumerSCameWhichEvent).then(response => {
-         if(response.status ==200){
-           this.loading =false;
-          //  console.log(response)
-           resolve(response.data);
-         }
-        });
-     })
+      this.waitingLabel = `正在努力计算中预计花费3分钟超过5分钟没有请刷新网页😵`
+      return new Promise(resolve=>{
+        this.$axios.get(eventApi.getConsumerSCameWhichEvent).then(response => {
+          if(response.status ==200){
+            this.loading =false;
+            //  console.log(response)
+            resolve(response.data);
+          }
+          });
+      })
     },
     // 异步获取所有数据
     async getAllData() {
-      // let allEvent = await this.getAllEvent()
-      // let allEvent = await this.filterEventConsumerNum()
-      // await this.filteEventDate(allEvent);
+      let allEvent = await this.filterEventConsumerNum()
+      await this.filteEventDate(allEvent);
       await this.drawLine();
     },
 
