@@ -57,94 +57,132 @@ function _getAllConsumer() {
 
 // 模糊查询某一场活动来了多少人
 function _getConsumerCameWhichEvent(_eventNum) {
-    return new Promise(resolve =>{
-    mysqlpool.query(curd_consumer.getConsumerCameWhichEvent, _eventNum, function (err, rows, fields) {
-        if (err) {
-            console.log(err);
-            return;
-        } else {
-            resolve(rows)
-            // console.log('get Consumer Came Which Event')
+    return new Promise(resolve => {
+        mysqlpool.query(curd_consumer.getConsumerCameWhichEvent, _eventNum, function (err, rows, fields) {
+            if (err) {
+                console.log(err);
+                return;
+            } else {
+                resolve(rows)
+                // console.log('get Consumer Came Which Event')
+            }
+        })
+    })
+}
+// 创建每个月参加活动的人数的表前整理数据结构
+function filtNewEventMenmberDataArr(allEvent) {
+    return new Promise(resolve => {
+        var allEventNum = []
+        for (var i = 0, tpmallEventlen = allEvent.length; i < tpmallEventlen; i++) {
+            let allEventNumItem = {
+                eventNum: allEvent[i].event_num,
+                eventDate: allEvent[i].event_date,
+                eventProvince: allEvent[i].event_province,
+                memberNum: 0
+            }
+            mysqlpool.query(curd_consumer.getConsumerCameWhichEvent, allEvent[i].event_num, function (err, rows, fields) {
+                if (err) {
+                    throw err
+                } else {
+                    allEventNumItem.memberNum = rows.length
+                    allEventNum.push(allEventNumItem)
+                    if(allEventNum.length == tpmallEventlen){
+                        resolve(allEventNum)
+                    }
+                }
+            })
         }
     })
+}
+// 创建每个月参加活动的人数活动的表
+function createNewEventMenmberDataArr(reson){
+    return new Promise((resolve) => {
+        let resonDate = reson
+        for (var ii = 0; ii < resonDate.length; ii++) {
+            let insertAllEventMemberNumTmpsql = `INSERT INTO AllEventMemberNumTmp VALUES(?,?,?,?);`
+            mysqlpool.query(insertAllEventMemberNumTmpsql, [resonDate[ii].eventNum, resonDate[ii].eventDate, resonDate[ii].eventProvince, resonDate[ii].memberNum], function (err, rows, fields) {
+                if (err) {
+                    throw err
+                } else {
+                    resolve('1')
+                }
+            })
+        }
+    })
+}
+// 获得每个月参加活动的人数活动的表
+function _getUpdatedgetAllConsumer(){
+    return new Promise(resolve => {
+        mysqlpool.query(curd_consumer.getUpdatedgetAllConsumer, function (err, rows, fields) {
+            if (err) {
+                console.log(err);
+                return;
+            } else {
+                resolve(rows)
+            }
+        });
+    })
+}
+
+function clearAllEventMenberNumTmp(){
+    return new Promise(resolve => {
+        mysqlpool.query(curd_consumer.clearAllEventMenberNumTmp, function (err, rows, fields) {
+            if (err) {
+                throw err
+            } else {
+                resolve('1')
+            }
+        });
+    }) 
+}
+function getUpdatedgetAllConsumerTimelyWork(res){
+    clearAllEventMenberNumTmp().then((resp)=>{
+        if(resp == '1'){
+            _getAllEvent().then(resp => {
+                filtNewEventMenmberDataArr(resp).then(resp => {
+                    createNewEventMenmberDataArr(resp).then((resp)=>{
+                        if(resp =='1'){
+                            res.send('Add successfully')
+                        }
+                    })
+                })
+            })
+        }else{
+            return;
+        }
     })
 }
 
 // 模糊查询某活动来了谁
 router.post('/getEvenrCamers', function (req, res, next) {
-    _getConsumerCameWhichEvent(req.body.eventNum).then((data)=>{
+    _getConsumerCameWhichEvent(req.body.eventNum).then((data) => {
         res.send(data)
     })
 })
 
-// 创建每个月参加活动的人数的表
+// 创建每个月参加活动的人数的表(接口已废弃)
 router.get('/getAllEventMemberNum', function (req, res, next) {
-    _getAllEvent().then(resp => {
-        var allEvent = resp;
-        var allEventNum = []
-        // var beginTime = +new Date();
+    // var beginTime = +new Date();
         // var querySpendTime = ''
-        function aa() {
-            return new Promise(resolve => {
-                for (var i = 0, tpmallEventlen = allEvent.length; i < tpmallEventlen; i++) {
-                    let allEventNumItem = {
-                        eventNum: allEvent[i].event_num,
-                        eventDate: allEvent[i].event_date,
-                        eventProvince: allEvent[i].event_province,
-                        memberNum: 0
-                    }
-                    mysqlpool.query(curd_consumer.getConsumerCameWhichEvent, allEvent[i].event_num, function (err, rows, fields) {
-                        if (err) {
-                            console.log(err)
-                        } else if (allEventNum.length === tpmallEventlen - 1) {
-                            // res.send(allEventNumItem)
-                            resolve(allEventNum)
-                        } else {
-                            allEventNumItem.memberNum = rows.length
-                            allEventNum.push(allEventNumItem)
-                        }
-                    })
-                }
-            })
-        }
-        aa().then(reson => {
-            return new Promise((resolve)=>{
-                let resonDate = reson
-                for(var ii=0;ii<resonDate.length;ii++){
-                    let insertAllEventMemberNumTmpsql = `INSERT INTO AllEventMemberNumTmp VALUES(?,?,?,?);`
-                    mysqlpool.query(insertAllEventMemberNumTmpsql, [resonDate[ii].eventNum,resonDate[ii].eventDate,resonDate[ii].eventProvince,resonDate[ii].memberNum],function (err, rows, fields) {
-                        if (err) {
-                            throw err
-                        } else {
-                            resolve('ok')
-                        }
-                    })
-                }
-            })
-
-            // 如果需要时间戳
-            //         设置localstorage获取时间戳s
-            //           localStorage.removeItem('querySpendTime')
-            //           localStorage.setItem('querySpendTime', querySpendTime);
-            //         设置localstorage获取时间戳e           
-            // let _get_querySpendTime = Number(localStorage.getItem('querySpendTime')) + 100
-            // 延迟获取所有数据
-            // console.log(_get_querySpendTime);
-            // setTimeout(() => {
-            //     console.log(allEventNum)
-            // }, _get_querySpendTime);
-
-        }).then((res)=>{
-            res.send(1)
-        })
-    })
-
-
+        // 如果需要时间戳
+        //         设置localstorage获取时间戳s
+        //           localStorage.removeItem('querySpendTime')
+        //           localStorage.setItem('querySpendTime', querySpendTime);
+        //         设置localstorage获取时间戳e           
+        // let _get_querySpendTime = Number(localStorage.getItem('querySpendTime')) + 100
+        // 延迟获取所有数据
+        // console.log(_get_querySpendTime);
+        // setTimeout(() => {
+        //     console.log(allEventNum)
+        // }, _get_querySpendTime);
+       
 });
+
+getUpdatedgetAllConsumerTimelyWork(res)
 
 // 获取每个月参加活动的人数的表
 router.get('/getUpdatedgetAllConsumer', function (req, res, next) {
-    _getAllConsumer().then(data => {
+    _getUpdatedgetAllConsumer().then(data => {
         res.send(data)
     })
 });
