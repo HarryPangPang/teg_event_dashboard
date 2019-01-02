@@ -68,11 +68,12 @@ function _getAllEvent() {
     return new Promise(resolve => {
         mysqlpool.query(curd_consumer.getAllEvent, function (err, rows, fields) {
             if (err) {
-                console.log(err);
+                logger.error(err);
                 return;
             } else {
+                logger.info('get all event')
                 resolve(rows)
-                // console.log('get all event')
+                
             }
         });
     })
@@ -82,11 +83,11 @@ function _getAllConsumer() {
     return new Promise(resolve => {
         mysqlpool.query(curd_consumer.getAllConsumer, function (err, rows, fields) {
             if (err) {
-                console.log(err);
+                logger.error(err);
                 return;
             } else {
+                logger.info('get all consumer')
                 resolve(rows)
-                // console.log('get all consumer')
             }
         });
     })
@@ -97,11 +98,11 @@ function _getConsumerCameWhichEvent(_eventNum) {
     return new Promise(resolve => {
         mysqlpool.query(curd_consumer.getConsumerCameWhichEvent, _eventNum, function (err, rows, fields) {
             if (err) {
-                console.log(err);
+                logger.error(err);
                 return;
             } else {
+                logger.info('get Consumer Came Which Event')
                 resolve(rows)
-                // console.log('get Consumer Came Which Event')
             }
         })
     })
@@ -152,10 +153,11 @@ function _getUpdatedgetAllConsumer() {
     return new Promise(resolve => {
         mysqlpool.query(curd_consumer.getUpdatedgetAllConsumer, function (err, rows, fields) {
             if (err) {
-                console.log(err);
+                logger.error(err);
                 return;
             } else {
                 resolve(rows)
+                logger.info('get _getUpdatedgetAllConsumer')
             }
         });
     })
@@ -180,7 +182,6 @@ function CreateUpdatedgetAllConsumerTimelyWork() {
                 filtNewEventMenmberDataArr(resp).then(resp => {
                     createNewEventMenmberDataArr(resp).then((resp) => {
                         if (resp == '1') {
-                            console.log('Add Successfully')
                             logger.info('CreateUpdatedgetAllConsumerTimelyWork Add successfully')
                         }
                     })
@@ -196,8 +197,7 @@ function CreateUpdatedgetAllConsumerTimelyWork() {
 function scheduleCronstyle() {
     schedule.scheduleJob('30 * * * * *', function () {
         CreateUpdatedgetAllConsumerTimelyWork()
-        console.log('scheduleCronstyle:' + new Date())
-        logger.debug('scheduleCronstyle:' + new Date());
+        logger.info('scheduleCronstyle:' + new Date());
     });
 }
 scheduleCronstyle();
@@ -249,7 +249,7 @@ router.get('/getAllEvent', function (req, res, next) {
 router.post('/searchConsumerEvent', function (req, res, next) {
     mysqlpool.query(curd_consumer.searchConsumerEvent, req.body.eventNum, function (err, rows, fields) {
         if (err) {
-            console.log('searchConsumerEvent')
+            logger.error('searchConsumerEvent')
             res.send(err);
         } else {
             res.send(rows)
