@@ -5,6 +5,8 @@ var mysqlconf = require('../dbconfig')
 var curd_consumer = require('../curdLib')
 var schedule = require('node-schedule');
 var mysqlpool = mysql.createPool(mysqlconf.mysql)
+
+// 配置log4日志
 const log4js = require('log4js');
 log4js.configure({
     appenders: {
@@ -29,9 +31,9 @@ log4js.configure({
             level: 'error'
         }
     },
-    pm2: true, //如果使用 pm2 -i 方式启动的 node 进程需要设置次为 true
+    // pm2: true, 
+    //如果使用 pm2 -i 方式启动的 node 进程需要设置次为 true
 });
-
 const logger = log4js.getLogger('mix');
 logger.level = 'debug'; // default level is OFF - which means no logs at all.
 
@@ -201,6 +203,7 @@ function scheduleCronstyle() {
     });
 }
 scheduleCronstyle();
+
 // 模糊查询某活动来了谁
 router.post('/getEvenrCamers', function (req, res, next) {
     _getConsumerCameWhichEvent(req.body.eventNum).then((data) => {
