@@ -41,7 +41,7 @@ export default {
     getConsumerSCameWhichEvent(){
       this.waitingLabel = `正在努力计算中预计花费3分钟超过5分钟没有请刷新网页😋`
       return new Promise(resolve=>{
-        this.$axios.get(eventApi.getConsumerSCameWhichEvent).then(response => {
+        this.$axios.get(eventApi.getUpdatedgetAllConsumer).then(response => {
           if(response.status ==200){
             this.loading =false;
             //  console.log(response)

@@ -4,7 +4,8 @@ var eventApi = {
     searchConsumerEvent:'http://localhost:3000/apiConsumer/searchConsumerEvent',
     searchConsumerInfoByPhone:'http://localhost:3000/apiConsumer/searchConsumerInfoByPhone',
     getConsumerCameWhichEvent:'http://localhost:3000/apiConsumer/getEvenrCamers',
-    getConsumerSCameWhichEvent:'http://localhost:3000/apiConsumer/getAllEventMemberNum'
+    getConsumerSCameWhichEvent:'http://localhost:3000/apiConsumer/getAllEventMemberNum',
+    getUpdatedgetAllConsumer:'http://localhost:3000/apiConsumer/getUpdatedgetAllConsumer'
 }
 
 export default eventApi

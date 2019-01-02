@@ -3,8 +3,45 @@ var router = express.Router();
 var mysql = require('mysql2');
 var mysqlconf = require('../dbconfig')
 var curd_consumer = require('../curdLib')
-
+var schedule = require('node-schedule');
 var mysqlpool = mysql.createPool(mysqlconf.mysql)
+const log4js = require('log4js');
+log4js.configure({
+    appenders: {
+        api_consumer: {
+            type: 'file',
+            filename: 'api_consumer.log'
+        },
+        out: {
+            type: 'stdout',
+            layout: {
+                type: 'basic'
+            }
+        }
+    },
+    categories: {
+        default: {
+            appenders: ['out'],
+            level: 'error'
+        },
+        mix: {
+            appenders: ['api_consumer', 'out'],
+            level: 'error'
+        }
+    },
+    pm2: true, //如果使用 pm2 -i 方式启动的 node 进程需要设置次为 true
+});
+
+const logger = log4js.getLogger('mix');
+logger.level = 'debug'; // default level is OFF - which means no logs at all.
+
+// logger.trace('Entering cheese testing');
+// logger.debug('Got cheese.');
+// logger.info('Cheese is Gouda.');
+// logger.warn('Cheese is quite smelly.');
+// logger.error('Cheese is too ripe!');
+// logger.fatal('Cheese was breeding ground for listeria.');
+
 //设置跨域访问
 // router.all('*', function(req, res, next) {
 //     res.header("Access-Control-Allow-Origin", "*");
@@ -86,7 +123,7 @@ function filtNewEventMenmberDataArr(allEvent) {
                 } else {
                     allEventNumItem.memberNum = rows.length
                     allEventNum.push(allEventNumItem)
-                    if(allEventNum.length == tpmallEventlen){
+                    if (allEventNum.length == tpmallEventlen) {
                         resolve(allEventNum)
                     }
                 }
@@ -95,7 +132,7 @@ function filtNewEventMenmberDataArr(allEvent) {
     })
 }
 // 创建每个月参加活动的人数活动的表
-function createNewEventMenmberDataArr(reson){
+function createNewEventMenmberDataArr(reson) {
     return new Promise((resolve) => {
         let resonDate = reson
         for (var ii = 0; ii < resonDate.length; ii++) {
@@ -111,7 +148,7 @@ function createNewEventMenmberDataArr(reson){
     })
 }
 // 获得每个月参加活动的人数活动的表
-function _getUpdatedgetAllConsumer(){
+function _getUpdatedgetAllConsumer() {
     return new Promise(resolve => {
         mysqlpool.query(curd_consumer.getUpdatedgetAllConsumer, function (err, rows, fields) {
             if (err) {
@@ -124,7 +161,7 @@ function _getUpdatedgetAllConsumer(){
     })
 }
 
-function clearAllEventMenberNumTmp(){
+function clearAllEventMenberNumTmp() {
     return new Promise(resolve => {
         mysqlpool.query(curd_consumer.clearAllEventMenberNumTmp, function (err, rows, fields) {
             if (err) {
@@ -133,26 +170,37 @@ function clearAllEventMenberNumTmp(){
                 resolve('1')
             }
         });
-    }) 
+    })
 }
-function getUpdatedgetAllConsumerTimelyWork(res){
-    clearAllEventMenberNumTmp().then((resp)=>{
-        if(resp == '1'){
+// 创建活动客户数据表定时任务
+function CreateUpdatedgetAllConsumerTimelyWork() {
+    clearAllEventMenberNumTmp().then((resp) => {
+        if (resp == '1') {
             _getAllEvent().then(resp => {
                 filtNewEventMenmberDataArr(resp).then(resp => {
-                    createNewEventMenmberDataArr(resp).then((resp)=>{
-                        if(resp =='1'){
-                            res.send('Add successfully')
+                    createNewEventMenmberDataArr(resp).then((resp) => {
+                        if (resp == '1') {
+                            console.log('Add Successfully')
+                            logger.info('CreateUpdatedgetAllConsumerTimelyWork Add successfully')
                         }
                     })
                 })
             })
-        }else{
+        } else {
             return;
         }
     })
 }
 
+// 配置定时任务
+function scheduleCronstyle() {
+    schedule.scheduleJob('30 * * * * *', function () {
+        CreateUpdatedgetAllConsumerTimelyWork()
+        console.log('scheduleCronstyle:' + new Date())
+        logger.debug('scheduleCronstyle:' + new Date());
+    });
+}
+scheduleCronstyle();
 // 模糊查询某活动来了谁
 router.post('/getEvenrCamers', function (req, res, next) {
     _getConsumerCameWhichEvent(req.body.eventNum).then((data) => {
@@ -161,26 +209,24 @@ router.post('/getEvenrCamers', function (req, res, next) {
 })
 
 // 创建每个月参加活动的人数的表(接口已废弃)
-router.get('/getAllEventMemberNum', function (req, res, next) {
-    // var beginTime = +new Date();
-        // var querySpendTime = ''
-        // 如果需要时间戳
-        //         设置localstorage获取时间戳s
-        //           localStorage.removeItem('querySpendTime')
-        //           localStorage.setItem('querySpendTime', querySpendTime);
-        //         设置localstorage获取时间戳e           
-        // let _get_querySpendTime = Number(localStorage.getItem('querySpendTime')) + 100
-        // 延迟获取所有数据
-        // console.log(_get_querySpendTime);
-        // setTimeout(() => {
-        //     console.log(allEventNum)
-        // }, _get_querySpendTime);
-       
-});
+// router.get('/getAllEventMemberNum', function (req, res, next) {
+// var beginTime = +new Date();
+// var querySpendTime = ''
+// 如果需要时间戳
+//         设置localstorage获取时间戳s
+//           localStorage.removeItem('querySpendTime')
+//           localStorage.setItem('querySpendTime', querySpendTime);
+//         设置localstorage获取时间戳e           
+// let _get_querySpendTime = Number(localStorage.getItem('querySpendTime')) + 100
+// 延迟获取所有数据
+// console.log(_get_querySpendTime);
+// setTimeout(() => {
+//     console.log(allEventNum)
+// }, _get_querySpendTime);
 
-getUpdatedgetAllConsumerTimelyWork(res)
+// });
 
-// 获取每个月参加活动的人数的表
+// 获取新表的每个月参加活动的人数的表
 router.get('/getUpdatedgetAllConsumer', function (req, res, next) {
     _getUpdatedgetAllConsumer().then(data => {
         res.send(data)

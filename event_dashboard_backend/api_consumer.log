@@ -1,0 +1,7 @@
+[2019-01-02T10:26:18.832] [DEBUG] mix - Got cheese.
+[2019-01-02T10:26:18.836] [INFO] mix - Cheese is Gouda.
+[2019-01-02T10:26:18.836] [WARN] mix - Cheese is quite smelly.
+[2019-01-02T10:26:18.836] [ERROR] mix - Cheese is too ripe!
+[2019-01-02T10:26:18.836] [FATAL] mix - Cheese was breeding ground for listeria.
+[2019-01-02T10:26:30.005] [DEBUG] mix - scheduleCronstyle:Wed Jan 02 2019 10:26:30 GMT+0800 (中国标准时间)
+[2019-01-02T10:26:30.192] [INFO] mix - CreateUpdatedgetAllConsumerTimelyWork Add successfully
