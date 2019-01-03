@@ -252,10 +252,8 @@ function filterAllConsumerLinkEvent() {
                             newConsumerRowData.event_audience_type.push(rows[0].event_audience_type)
                             newConsumerRowData.event_apply_dept.push(rows[0].event_apply_dept)
                             newConsumerRowDataArr.push(newConsumerRowData)
-                            // logger.debug(newConsumerRowData)
                             let newConsumerRowDataArrOnly = [...new Set(newConsumerRowDataArr)]
                             if(newConsumerRowDataArrOnly.length == lonelyData.length){
-                                // logger.debug(newConsumerRowDataArrOnly);
                                 resolve(newConsumerRowDataArrOnly)
                                 return
                             }
@@ -268,52 +266,53 @@ function filterAllConsumerLinkEvent() {
     })
 }
 
-// 创建活动客户关联活动数据表前整理数据结构
-function createNewAllConsumerLinkEvent(reson) {
-    return new Promise((resolve) => {
-        let resonDate = reson
-        for (var ii = 0; ii < resonDate.length; ii++) {
-            let insertAllConsumerLinkEvent = `INSERT INTO allconsumerlinkevent(consumer_id,event_numid,consumer_name,consumer_sex,contact_info1,contact_info2,event_audience_type,event_apply_dept) values(?,?,?,?,?,?,?,?)`
-            mysqlpool.query(insertAllConsumerLinkEvent, [
-                resonDate[ii].consumer_id,
-                resonDate[ii].event_numid,
-                resonDate[ii].consumer_name,
-                resonDate[ii].consumer_sex,
-                resonDate[ii].contact_info1,
-                resonDate[ii].contact_info2,
-                resonDate[ii].event_audience_type.join(',').toString(),
-                resonDate[ii].event_apply_dept.join(',').toString()
-            ],
-                function (err, rows, fields) {
-                if (err) {
-                    logger.error(err)
-                    throw err
-                } else {
-                    resolve('1')
-                }
-            })
-        }
-    })
-}
+// // 创建活动客户关联活动数据表前整理数据结构
+// function createNewAllConsumerLinkEvent(reson) {
+//     return new Promise((resolve) => {
+//         resolve(resolve)
+//         let resonDate = reson
+//         for (var ii = 0; ii < resonDate.length; ii++) {
+//             let insertAllConsumerLinkEvent = `INSERT INTO allconsumerlinkevent(consumer_id,event_numid,consumer_name,consumer_sex,contact_info1,contact_info2,event_audience_type,event_apply_dept) values(?,?,?,?,?,?,?,?)`
+//             mysqlpool.query(insertAllConsumerLinkEvent, [
+//                 resonDate[ii].consumer_id,
+//                 resonDate[ii].event_numid,
+//                 resonDate[ii].consumer_name,
+//                 resonDate[ii].consumer_sex,
+//                 resonDate[ii].contact_info1,
+//                 resonDate[ii].contact_info2,
+//                 resonDate[ii].event_audience_type.join(',').toString(),
+//                 resonDate[ii].event_apply_dept.join(',').toString()
+//             ],
+//                 function (err, rows, fields) {
+//                 if (err) {
+//                     logger.error(err)
+//                     throw err
+//                 } else {
+//                     resolve('1')
+//                 }
+//             })
+//         }
+//     })
+// }
+// createNewAllConsumerLinkEvent()
+
 // 创建活动客户关联活动数据表定时任务
-function CreateUpdatedAllConsumerLinkEventTimelyWork() {
-    return new Promise(resolve=>{
-        clearAllConsumerLinkEvent().then((resp) => {
-            if (resp == '1') {
-                filterAllConsumerLinkEvent().then(resp=>{
-                        createNewAllConsumerLinkEvent(resp).then(resp=>{
-                            if(resp =='1'){
-                                resolve()
-                                logger.info('INSERT INTO AllConsumerLinkEvent Successfully')
-                            }
-                        })
-                })
-            } else {
-                return;
-            }
-        })
-    })
-}
+// function CreateUpdatedAllConsumerLinkEventTimelyWork() {
+//     return new Promise(resolve=>{
+//         clearAllConsumerLinkEvent().then((resp) => {
+//             if (resp == '1') {
+//                 filterAllConsumerLinkEvent().then(resp=>{
+//                         createNewAllConsumerLinkEvent(resp).then(resp=>{
+//                             logger.debug(resp)
+//                         })
+//                 })
+//             } else {
+//                 return;
+//             }
+//         })
+//     })
+// }
+
 // CreateUpdatedAllConsumerLinkEventTimelyWork()
 
 
