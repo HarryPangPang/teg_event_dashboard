@@ -5,17 +5,17 @@
         <span>我要找人</span>
       </el-col>
       <el-col :span="7">
-        <el-input placeholder="请输入姓名/手机" v-model="searchInfo" class="">
+        <el-input placeholder="请输入姓名/手机" v-model="searchInfo">
           <el-button slot="append" icon="el-icon-search" @click="checkNameOrPhone"></el-button>
         </el-input>
       </el-col>
       <el-col :span="2">
         <el-button icon="el-icon-refresh" @click="reset">重置</el-button>
       </el-col>
-      
+
     </el-row>
   <el-table v-if="hasConsunerInfoResult"
-    :data="searchConsumerInfoRes"
+    v-bind:data="searchConsumerInfoRes"
     border
     style="width: 100%">
     <el-table-column
@@ -76,20 +76,11 @@ export default {
       hasConsunerInfoResult:false,
     };
   },
-  created() {
-
-  },
-  mounted() {
-
-  },
   methods: {
     reset(){
       this.searchConsumerInfoRes = '';
       this.searchInfo= ''
     },
-    handleClick(row) {
-        console.log(row);
-      },
     // 判断搜索字段是姓名还是手机号
     checkNameOrPhone(){
       if(this.searchInfo == '' || this.searchInfo ==[]){
@@ -116,6 +107,7 @@ export default {
         this.$axios.post(eventApi.searchConsumerInfoByPhone,OsearchItem).then(response => {
           this.hasConsunerInfoResult= true;
           this.searchConsumerInfoRes=response.data;
+          console.log(this.searchConsumerInfoRes)
         });
     }
   }

@@ -2,11 +2,11 @@
   <div>
     <el-row :gutter="20">
       <el-col :span="2" class="search-label">
-        <span>我要找人</span>
+        <span>我要找活动</span>
       </el-col>
       <el-col :span="7">
-        <el-input placeholder="请输入姓名/手机" v-model="searchInfo" class="">
-          <el-button slot="append" icon="el-icon-search" @click="checkNameOrPhone"></el-button>
+        <el-input placeholder="请输入活动编号" v-model="searchInfo">
+          <el-button slot="append" icon="el-icon-search" @click="searchByEventNUm"></el-button>
         </el-input>
       </el-col>
       <el-col :span="2">
@@ -14,8 +14,8 @@
       </el-col>
       
     </el-row>
-  <el-table v-if="hasConsunerInfoResult"
-    :data="searchConsumerInfoRes"
+  <!-- <el-table v-if="hasConsunerInfoResult"
+     v-bind:data="searchEventInfoRes"
     border
     style="width: 100%">
     <el-table-column
@@ -59,7 +59,7 @@
       label="comment"
       width="">
     </el-table-column>
-  </el-table>
+  </el-table> -->
   </div>
 
 </template>
@@ -67,55 +67,28 @@
 <script>
 import eventApi from "../../api/api.js";
 export default {
-  name: "searchConsumerInfo",
+  name: "searchEventInfo",
   props: {},
   data() {
     return {
       searchInfo:'',
-      searchConsumerInfoRes:'',
+      searchEventInfoRes:'',
       hasConsunerInfoResult:false,
     };
   },
-  created() {
-
-  },
-  mounted() {
-
-  },
   methods: {
     reset(){
-      this.searchConsumerInfoRes = '';
+      this.searchEventInfoRes = '';
       this.searchInfo= ''
     },
-    handleClick(row) {
-        console.log(row);
-      },
-    // 判断搜索字段是姓名还是手机号
-    checkNameOrPhone(){
-      if(this.searchInfo == '' || this.searchInfo ==[]){
-        alert('不能输入为空')
-      } else{
-        let phoneReg = /^1[345789]\d{9}$/;
-        let nameReg = /^[\u4e00-\u9fa5]{1,7}$|^[\dA-Za-z_]{1,14}$/;
-         if (phoneReg.test(this.searchInfo)) {
-           let searchItem = this.searchInfo
-           this.searchByPhone(searchItem)
-            // console.log('手机号')
-          } else if(nameReg.test(this.searchInfo)){
-            alert('暂不支持搜索姓名')
-            // console.log('姓名')
-          } else{
-            alert('搜不到')
-          }
-      }
-    },
-    searchByPhone(searchItem){
+    searchByEventNUm(){
         let OsearchItem = {
-         phoneNum : searchItem
+         eventNum : this.searchInfo
         }
-        this.$axios.post(eventApi.searchConsumerInfoByPhone,OsearchItem).then(response => {
+        this.$axios.post(eventApi.searchConsumerEvent,OsearchItem).then(response => {
+          console.log(response)
           this.hasConsunerInfoResult= true;
-          this.searchConsumerInfoRes=response.data;
+          this.searchEventInfoRes=response.data;
         });
     }
   }

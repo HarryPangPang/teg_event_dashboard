@@ -8,7 +8,7 @@
       YTD活动场次及人数
       <div id="eventLineCharts1" class="useful-mobile-pie"></div>
     </el-row>
-    <el-row>
+    <el-row class="charts_margin">
       活动城市分布图Top10
       <div id="eventLineCharts2" class="useful-mobile-pie"></div>
     </el-row>
@@ -122,26 +122,46 @@ export default {
       return new Promise(resolve=>{
 
         let allOriginEvents = allEvent;
-        let allOriginEventCitys=[]
+        let allOriginEventCitys=[];
+        let allComputedEvewntCitys=[]
         for(var i=0;i<allOriginEvents.length;i++){
           allOriginEventCitys.push(allOriginEvents[i].eventProvince)
         }
+        console.log(allOriginEventCitys.length)
         let allEventsRanks = allOriginEventCitys.reduce((cityArr, cityName) => {
             cityName in cityArr ? cityArr[cityName]++ : (cityArr[cityName] = 1);
             return cityArr;
         },{});
-        
         Object.keys(allEventsRanks).forEach((key)=>{
           let allEventsRanksArrItem={
             name:'',
             value:''
           }
-          // console.log(allEventsRanksArrItem)
           allEventsRanksArrItem.name=key
           allEventsRanksArrItem.value=allEventsRanks[key]
-          this.allEventsRank.push(allEventsRanksArrItem)
+          allComputedEvewntCitys.push(allEventsRanksArrItem)
         })
-        // console.log(this.allEventsRank)
+        // 数组根据数组对象中的某个属性值进行排序的方法 
+        function sortBy(attr,rev){
+            //第二个参数没有传递 默认升序排列
+            if(rev ==  undefined){
+                rev = 1;
+            }else{
+                rev = (rev) ? 1 : -1;
+            }
+            return function(a,b){
+                a = a[attr];
+                b = b[attr];
+                if(a < b){
+                    return rev * -1;
+                }
+                if(a > b){
+                    return rev * 1;
+                }
+                return 0;
+            }
+        }
+        this.allEventsRank = allComputedEvewntCitys.sort(sortBy('value','rev')).slice(-10)
         resolve(this.allEventsRank)
       })
     },
@@ -154,7 +174,7 @@ export default {
       await this.drawLine2();
     },
 
-    // 画echarts
+    // 画YTD活动场次及人数echarts
     drawLine1() {
       return new Promise(resolve => {
         // 基于准备好的dom，初始化echarts实例
@@ -246,6 +266,7 @@ export default {
         resolve();
       });
     },
+    // 活动城市分布图Top10echarts
     drawLine2() {
       return new Promise(resolve => {
         // 基于准备好的dom，初始化echarts实例
@@ -254,6 +275,12 @@ export default {
         );
         // 绘制图表
         usefulMobilePie.setOption({
+           toolbox: {
+              feature: {
+                  dataView: {show: true, readOnly: false},
+                  saveAsImage: {show: true}
+              }
+          },
           title: {
             text: "活动城市分布图Top10",
             subtext: "",
@@ -265,7 +292,7 @@ export default {
           },
           series: [
             {
-              name: "访问来源",
+              name: "活动城市:",
               type: "pie",
               radius: "55%",
               center: ["50%", "60%"],
@@ -295,5 +322,8 @@ export default {
 }
 .el-loading-mask .el-loading-spinner{
   top: 0 !important;
+}
+.charts_margin{
+  margin-top: 30px;
 }
 </style>
