@@ -1,64 +1,54 @@
-[2019-01-04T16:56:52.654] [DEBUG] mix - 9999
-[2019-01-04T16:56:52.656] [DEBUG] mix - filterAllConsumerLinkEvent1
-[2019-01-04T16:56:52.686] [INFO] mix - 插入成功1
-[2019-01-04T17:04:18.644] [INFO] mix - get all consumer
-[2019-01-04T17:08:58.883] [ERROR] mix - { Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
-    at Packet.asError (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\packets\packet.js:684:17)
-    at Query.execute (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\commands\command.js:28:26)
-    at PoolConnection.handlePacket (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\connection.js:455:32)
-    at PacketParser.onPacket (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\connection.js:73:18)
-    at PacketParser.executeStart (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\packet_parser.js:75:16)
-    at Socket.<anonymous> (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\connection.js:80:31)
-    at emitOne (events.js:116:13)
-    at Socket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-  code: 'ER_PARSE_ERROR',
-  errno: 1064,
-  sqlState: '42000',
-  sqlMessage: 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'?\' at line 1' }
-[2019-01-04T17:11:39.202] [ERROR] mix - { Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
-    at Packet.asError (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\packets\packet.js:684:17)
-    at Query.execute (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\commands\command.js:28:26)
-    at PoolConnection.handlePacket (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\connection.js:455:32)
-    at PacketParser.onPacket (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\connection.js:73:18)
-    at PacketParser.executeStart (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\packet_parser.js:75:16)
-    at Socket.<anonymous> (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\connection.js:80:31)
-    at emitOne (events.js:116:13)
-    at Socket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-  code: 'ER_PARSE_ERROR',
-  errno: 1064,
-  sqlState: '42000',
-  sqlMessage: 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'?\' at line 1' }
-[2019-01-04T17:11:47.319] [ERROR] mix - { Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
-    at Packet.asError (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\packets\packet.js:684:17)
-    at Query.execute (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\commands\command.js:28:26)
-    at PoolConnection.handlePacket (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\connection.js:455:32)
-    at PacketParser.onPacket (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\connection.js:73:18)
-    at PacketParser.executeStart (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\packet_parser.js:75:16)
-    at Socket.<anonymous> (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\connection.js:80:31)
-    at emitOne (events.js:116:13)
-    at Socket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-  code: 'ER_PARSE_ERROR',
-  errno: 1064,
-  sqlState: '42000',
-  sqlMessage: 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'?\' at line 1' }
-[2019-01-04T17:13:47.323] [ERROR] mix - { Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
-    at Packet.asError (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\packets\packet.js:684:17)
-    at Query.execute (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\commands\command.js:28:26)
-    at PoolConnection.handlePacket (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\connection.js:455:32)
-    at PacketParser.onPacket (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\connection.js:73:18)
-    at PacketParser.executeStart (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\packet_parser.js:75:16)
-    at Socket.<anonymous> (C:\Users\hzhang\Desktop\teg_event_dashboard\event_dashboard_backend\node_modules\mysql2\lib\connection.js:80:31)
-    at emitOne (events.js:116:13)
-    at Socket.emit (events.js:211:7)
-    at addChunk (_stream_readable.js:263:12)
-    at readableAddChunk (_stream_readable.js:250:11)
-  code: 'ER_PARSE_ERROR',
-  errno: 1064,
-  sqlState: '42000',
-  sqlMessage: 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \'?\' at line 1' }
+[2019-01-04T18:03:30.009] [INFO] mix - scheduleCronstyle:Fri Jan 04 2019 18:03:30 GMT+0800 (中国标准时间)
+[2019-01-04T18:04:30.043] [INFO] mix - scheduleCronstyle:Fri Jan 04 2019 18:04:30 GMT+0800 (中国标准时间)
+[2019-01-04T18:05:30.042] [INFO] mix - clearAllEventMenberNumTmp done
+[2019-01-04T18:05:30.121] [INFO] mix - get all event
+[2019-01-04T18:07:05.784] [INFO] mix - clearAllEventMenberNumTmp done
+[2019-01-04T18:07:05.830] [INFO] mix - get all event
+[2019-01-04T18:07:06.071] [INFO] mix - filtNewEventMenmberDataArr done
+[2019-01-04T18:08:30.043] [INFO] mix - clearAllEventMenberNumTmp done
+[2019-01-04T18:08:30.116] [INFO] mix - get all event
+[2019-01-04T18:10:11.688] [INFO] mix - clearAllEventMenberNumTmp done
+[2019-01-04T18:10:11.978] [INFO] mix - get all consumer
+[2019-01-04T18:10:12.481] [INFO] mix - filtNewEventMenmberDataArr done
+[2019-01-04T18:10:12.556] [INFO] mix - get all event
+[2019-01-04T18:10:12.632] [INFO] mix - CreateUpdatedgetAllConsumerTimelyWork Add successfully
+[2019-01-04T18:12:04.977] [INFO] mix - clearAllEventMenberNumTmp done
+[2019-01-04T18:12:05.135] [INFO] mix - clearAllConsumerLinkEvent done
+[2019-01-04T18:12:05.189] [INFO] mix - get all event
+[2019-01-04T18:12:05.342] [INFO] mix - clearAllEventMenberNumTmp done
+[2019-01-04T18:12:05.352] [INFO] mix - get _getUpdatedgetAllConsumer
+[2019-01-04T18:12:05.355] [INFO] mix - filtNewEventMenmberDataArr done
+[2019-01-04T18:12:05.408] [INFO] mix - get all consumer
+[2019-01-04T18:12:06.061] [INFO] mix - get all consumer
+[2019-01-04T18:14:30.038] [INFO] mix - clearAllEventMenberNumTmp done
+[2019-01-04T18:14:30.114] [INFO] mix - get all event
+[2019-01-04T18:16:09.452] [INFO] mix - clearAllEventMenberNumTmp done
+[2019-01-04T18:16:09.499] [INFO] mix - get all event
+[2019-01-04T18:16:09.811] [INFO] mix - filtNewEventMenmberDataArr done
+[2019-01-04T18:17:53.797] [INFO] mix - CreateUpdatedgetAllConsumerTimelyWork Add successfully
+[2019-01-04T18:17:53.957] [INFO] mix - filtNewEventMenmberDataArr done
+[2019-01-04T18:17:55.614] [INFO] mix - clearAllConsumerLinkEvent done
+[2019-01-04T18:17:55.616] [INFO] mix - clearAllEventMenberNumTmp done
+[2019-01-04T18:17:55.627] [INFO] mix - clearAllEventMenberNumTmp done
+[2019-01-04T18:17:55.629] [INFO] mix - CreateUpdatedgetAllConsumerTimelyWork Add successfully
+[2019-01-04T18:17:56.980] [INFO] mix - get all event
+[2019-01-04T18:17:57.293] [INFO] mix - get all consumer
+[2019-01-04T18:17:57.468] [INFO] mix - get all event
+[2019-01-04T18:17:57.549] [INFO] mix - clearAllConsumerLinkEvent done
+[2019-01-04T18:19:47.854] [INFO] mix - filtNewEventMenmberDataArr done
+[2019-01-04T18:22:09.918] [INFO] mix - newConsumerRowDataArrOnly resolve done
+[2019-01-04T18:22:09.933] [INFO] mix - filterAllConsumerLinkEvent done
+[2019-01-04T18:23:56.026] [INFO] mix - clearAllEventMenberNumTmp done
+[2019-01-04T18:23:56.039] [INFO] mix - clearAllEventMenberNumTmp done
+[2019-01-04T18:23:56.042] [INFO] mix - CreateUpdatedgetAllConsumerTimelyWork Add successfully
+[2019-01-04T18:23:56.432] [INFO] mix - get all consumer
+[2019-01-04T18:23:56.515] [INFO] mix - filtNewEventMenmberDataArr done
+[2019-01-04T18:23:57.944] [INFO] mix - 插入成功1
+[2019-01-04T18:23:57.945] [INFO] mix - scheduleCronstyle:Fri Jan 04 2019 18:23:57 GMT+0800 (中国标准时间)
+[2019-01-04T18:23:57.967] [INFO] mix - clearAllEventMenberNumTmp done
+[2019-01-04T18:23:57.986] [INFO] mix - clearAllEventMenberNumTmp done
+[2019-01-04T18:24:06.918] [INFO] mix - get all event
+[2019-01-04T18:24:06.968] [INFO] mix - get all event
+[2019-01-04T18:24:07.007] [INFO] mix - clearAllEventMenberNumTmp done
+[2019-01-04T18:24:07.011] [INFO] mix - clearAllEventMenberNumTmp done
+[2019-01-04T18:24:07.017] [INFO] mix - clearAllConsumerLinkEvent done
