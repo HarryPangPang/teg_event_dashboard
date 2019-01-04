@@ -52,3 +52,6 @@
 [2019-01-04T18:24:07.007] [INFO] mix - clearAllEventMenberNumTmp done
 [2019-01-04T18:24:07.011] [INFO] mix - clearAllEventMenberNumTmp done
 [2019-01-04T18:24:07.017] [INFO] mix - clearAllConsumerLinkEvent done
+[2019-01-04T18:25:45.404] [INFO] mix - clearAllEventMenberNumTmp done
+[2019-01-04T18:25:45.498] [INFO] mix - get all event
+[2019-01-04T18:27:26.950] [INFO] mix - filtNewEventMenmberDataArr done

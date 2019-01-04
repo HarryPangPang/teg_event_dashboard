@@ -312,25 +312,30 @@ function CreateUpdatedgetAllConsumerTimelyWork() {
     })
 }
 
-function createTimlyWorkCollection(){
-    CreateUpdatedgetAllConsumerTimelyWork().then(res=>{
-        if(res == '1'){
-         CreateUpdatedAllConsumerLinkEventTimelyWork().then(res=>{
-             if(res =='1'){
-                 logger.info('scheduleCronstyle:' + new Date());
-             }
-         })
-        }
-    })
-}
-createTimlyWorkCollection()
+// 有问题！
+// function createTimlyWorkCollection(){
+//     CreateUpdatedgetAllConsumerTimelyWork().then(res=>{
+//         if(res == '1'){
+//          CreateUpdatedAllConsumerLinkEventTimelyWork().then(res=>{
+//              if(res =='1'){
+//                  logger.info('scheduleCronstyle:' + new Date());
+//              }
+//          })
+//         }
+//     })
+// }
+
+
 // 配置定时任务
 // function scheduleCronstyle() {
 //     schedule.scheduleJob('* * 03 * * *', function () {
 //         createTimlyWorkCollection()
 //     });
 // }
-// scheduleCronstyle();
+// var scheduleCronstyle = ()=>{
+//     createTimlyWorkCollection: createTimlyWorkCollection()
+// }
+
 
 
 // 创建每个月参加活动的人数的表(接口已废弃)
