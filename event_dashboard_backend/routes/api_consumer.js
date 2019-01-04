@@ -95,9 +95,9 @@ function _getAllConsumer() {
     })
 }
 // 根据活动编号查询活动信息
-function _searchConsumerEvent(item) {
-    // return new Promise(resolve => {
-    mysqlpool.query(curd_consumer.searchConsumerEvent, item, function (err, rows, fields) {
+function _searchConsumerEvent(eventNum) {
+    return new Promise(resolve => {
+    mysqlpool.query(curd_consumer.searchConsumerEvent, eventNum, function (err, rows, fields) {
         if (err) {
             logger.error(err);
             return;
@@ -105,7 +105,7 @@ function _searchConsumerEvent(item) {
             resolve(rows)
         }
     });
-    // })
+    })
 }
 // 模糊查询某一场活动来了多少人
 function _getConsumerCameWhichEvent(_eventNum) {
@@ -374,7 +374,7 @@ router.get('/getAllEvent', function (req, res, next) {
 
 // 根据活动编号查询活动信息
 router.post('/searchConsumerEvent', function (req, res, next) {
-    _searchConsumerEvent.then(data=>{
+    _searchConsumerEvent(req.body.event_num).then(data=>{
         res.send(data)
     })
 });

@@ -107,7 +107,7 @@ export default {
         this.$axios.post(eventApi.searchConsumerInfoByPhone,OsearchItem).then(response => {
           this.hasConsunerInfoResult= true;
           this.searchConsumerInfoRes=response.data;
-          console.log(this.searchConsumerInfoRes)
+          // console.log(this.searchConsumerInfoRes)
         });
     }
   }

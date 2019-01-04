@@ -14,52 +14,52 @@
       </el-col>
       
     </el-row>
-  <!-- <el-table v-if="hasConsunerInfoResult"
+  <el-table v-if="hasConsunerInfoResult"
      v-bind:data="searchEventInfoRes"
     border
     style="width: 100%">
     <el-table-column
       fixed
-      prop="id"
-      label="id"
-      width="100">
-    </el-table-column>
-    <el-table-column
       prop="event_num"
       label="event_num"
-      width="120">
-    </el-table-column>
-    <el-table-column
-      prop="consumer_name"
-      label="name"
       width="100">
     </el-table-column>
     <el-table-column
-      prop="consumer_sex"
-      label="sex"
-      width="50">
+      prop="event_date"
+      label="event_date"
+      width="100">
     </el-table-column>
     <el-table-column
-      prop="contact_info1"
-      label="contact_info"
+      prop="event_name"
+      label="event_name"
+      width="100">
+    </el-table-column>
+    <el-table-column
+      prop="event_training_type"
+      label="event_training_type"
+      width="100">
+    </el-table-column>
+    <el-table-column
+      prop="event_audience_type"
+      label="event_audience_type"
+      width="160">
+    </el-table-column>
+    <el-table-column
+      prop="event_applicant"
+      label="event_applicant"
       width="120">
     </el-table-column>
     <el-table-column
-      prop="company"
-      label="company"
-      width="200">
-    </el-table-column>
-    <el-table-column
-      prop="Industry"
-      label="Industry"
+      prop="event_apply_dept"
+      label="event_apply_dept"
       width="120">
     </el-table-column>
     <el-table-column
-      prop="comment"
-      label="comment"
-      width="">
+      prop="event_province"
+      label="event_province"
+      width="100">
     </el-table-column>
-  </el-table> -->
+  </el-table>
   </div>
 
 </template>
@@ -83,10 +83,9 @@ export default {
     },
     searchByEventNUm(){
         let OsearchItem = {
-         eventNum : this.searchInfo
+         event_num : this.searchInfo
         }
         this.$axios.post(eventApi.searchConsumerEvent,OsearchItem).then(response => {
-          console.log(response)
           this.hasConsunerInfoResult= true;
           this.searchEventInfoRes=response.data;
         });
