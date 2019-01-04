@@ -133,7 +133,7 @@ function clearAllEventMenberNumTmp() {
         });
     })
 }
-// 清除clearAllEventMenberNumTmp临时表
+// 清除clearAllConsumerLinkEvent临时表
 function clearAllConsumerLinkEvent() {
     return new Promise(resolve => {
         mysqlpool.query(curd_consumer.clearAllConsumerLinkEvent, function (err, rows, fields) {
@@ -145,6 +145,9 @@ function clearAllConsumerLinkEvent() {
         });
     })
 }
+
+
+
 // 创建每个月参加活动的人数的表前整理数据结构
 function filtNewEventMenmberDataArr(allEvent) {
     return new Promise(resolve => {
@@ -243,30 +246,33 @@ function filterAllConsumerLinkEvent() {
                     event_audience_type: [],
                     event_apply_dept: []
                 }
+                newConsumerRowDataArr.push(newConsumerRowData)
+                
                 for (var i = 0; i < newConsumerRowData.event_num.length; i++) {
                     mysqlpool.query(curd_consumer.searchConsumerEvent, newConsumerRowData.event_num[i], function (err, rows, fields) {
                         if (err) {
-                            logger.error(err);
-                            return;
-                        } else {
+                            throw err;
+                        } else {  
                             newConsumerRowData.event_audience_type.push(rows[0].event_audience_type)
                             newConsumerRowData.event_apply_dept.push(rows[0].event_apply_dept)
                             newConsumerRowDataArr.push(newConsumerRowData)
+                            
                             let newConsumerRowDataArrOnly = [...new Set(newConsumerRowDataArr)]
-                            if(newConsumerRowDataArrOnly.length == lonelyData.length){
+                            if(newConsumerRowDataArrOnly.length === lonelyData.length){
+                                logger.debug(newConsumerRowData.consumer_id)
+                                logger.debug(rows[0])
                                 resolve(newConsumerRowDataArrOnly)
-                                return
+                                
                             }
                         }
                     });
                 }
-
             }
         })
     })
 }
 
-// // 创建活动客户关联活动数据表前整理数据结构
+// 创建活动客户关联活动数据表前整理数据结构
 // function createNewAllConsumerLinkEvent(reson) {
 //     return new Promise((resolve) => {
 //         resolve(resolve)
@@ -383,13 +389,8 @@ router.get('/getAllEvent', function (req, res, next) {
 
 // 根据活动编号查询活动信息
 router.post('/searchConsumerEvent', function (req, res, next) {
-    mysqlpool.query(curd_consumer.searchConsumerEvent, req.body.eventNum, function (err, rows, fields) {
-        if (err) {
-            logger.error('searchConsumerEvent')
-            res.send(err);
-        } else {
-            res.send(rows)
-        }
+    _searchConsumerEvent.then(data=>{
+        res.send(data)
     })
 });
 // 根据手机号查询客户信息

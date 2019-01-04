@@ -1,5 +1,1110 @@
-[2019-01-03T16:22:03.130] [INFO] mix - get all consumer
-[2019-01-03T16:25:42.237] [INFO] mix - get _getUpdatedgetAllConsumer
-[2019-01-03T16:25:44.831] [INFO] mix - get all consumer
-[2019-01-03T16:25:46.937] [INFO] mix - get _getUpdatedgetAllConsumer
-[2019-01-03T16:33:16.403] [INFO] mix - get all consumer
+[2019-01-04T14:21:05.782] [INFO] mix - get all consumer
+[2019-01-04T14:21:05.849] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:21:05.857] [DEBUG] mix - 10000
+[2019-01-04T14:21:05.994] [DEBUG] mix - Consumer - #1 & #2
+[2019-01-04T14:21:06.011] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.050] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.065] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.078] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.090] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.092] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.099] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.104] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.111] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.114] [DEBUG] mix - Consumer - #1 & #2
+[2019-01-04T14:21:06.123] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.124] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:21:06.134] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.140] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:21:06.146] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.148] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.154] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.158] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:21:06.163] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.165] [DEBUG] mix - Consumer - #1 & #2
+[2019-01-04T14:21:06.175] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.176] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.180] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.181] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.189] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.191] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:21:06.195] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.196] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.205] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.207] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:21:06.214] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.215] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.222] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.224] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:21:06.227] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.228] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.237] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.239] [DEBUG] mix - Consumer - #1 & #2
+[2019-01-04T14:21:06.243] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.247] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.256] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.258] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:21:06.261] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.266] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.272] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.274] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:21:06.278] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.283] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.289] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.290] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:21:06.296] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.299] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.310] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.312] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:21:06.317] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.322] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.326] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.327] [DEBUG] mix - Consumer - #1 & #2
+[2019-01-04T14:21:06.336] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.338] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.342] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.344] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.350] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.354] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.363] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.364] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:21:06.372] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.373] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.377] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.382] [DEBUG] mix - Consumer - #1 & #2
+[2019-01-04T14:21:06.388] [DEBUG] mix - 10000
+[2019-01-04T14:21:06.390] [DEBUG] mix - Trade - On
+[2019-01-04T14:21:06.393] [DEBUG] mix - 10000
+[2019-01-04T14:29:22.738] [INFO] mix - get all consumer
+[2019-01-04T14:29:22.884] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:29:22.887] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.150] [DEBUG] mix - Consumer - #1 & #2
+[2019-01-04T14:29:23.164] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.257] [DEBUG] mix - Trade - On
+[2019-01-04T14:29:23.260] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.275] [DEBUG] mix - Trade - On
+[2019-01-04T14:29:23.277] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.289] [DEBUG] mix - Consumer - #1 & #2
+[2019-01-04T14:29:23.290] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.304] [DEBUG] mix - Trade - On
+[2019-01-04T14:29:23.304] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.309] [DEBUG] mix - Trade - On
+[2019-01-04T14:29:23.313] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.331] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:29:23.332] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.342] [DEBUG] mix - Consumer - #1 & #2
+[2019-01-04T14:29:23.343] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.357] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:29:23.358] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.369] [DEBUG] mix - Trade - On
+[2019-01-04T14:29:23.370] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.377] [DEBUG] mix - Trade - On
+[2019-01-04T14:29:23.377] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.386] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:29:23.387] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.391] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:29:23.393] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.403] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:29:23.405] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.412] [DEBUG] mix - Trade - On
+[2019-01-04T14:29:23.412] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.422] [DEBUG] mix - Trade - On
+[2019-01-04T14:29:23.423] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.429] [DEBUG] mix - Trade - On
+[2019-01-04T14:29:23.434] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.440] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:29:23.442] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.454] [DEBUG] mix - Trade - On
+[2019-01-04T14:29:23.454] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.466] [DEBUG] mix - Consumer - #1 & #2
+[2019-01-04T14:29:23.468] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.478] [DEBUG] mix - Trade - On
+[2019-01-04T14:29:23.479] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.485] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:29:23.489] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.496] [DEBUG] mix - Trade - On
+[2019-01-04T14:29:23.496] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.504] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:29:23.504] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.512] [DEBUG] mix - Trade - On
+[2019-01-04T14:29:23.517] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.521] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:29:23.523] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.532] [DEBUG] mix - Trade - On
+[2019-01-04T14:29:23.534] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.540] [DEBUG] mix - Consumer - Private Dinner
+[2019-01-04T14:29:23.541] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.552] [DEBUG] mix - Trade - On
+[2019-01-04T14:29:23.553] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.557] [DEBUG] mix - Consumer - #1 & #2
+[2019-01-04T14:29:23.563] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.612] [DEBUG] mix - Trade - On
+[2019-01-04T14:29:23.699] [DEBUG] mix - 10000
+[2019-01-04T14:29:23.720] [DEBUG] mix - Trade - On
+[2019-01-04T14:29:23.734] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.222] [INFO] mix - get all consumer
+[2019-01-04T14:30:00.327] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.328] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.549] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.560] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.599] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.600] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.608] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.610] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.617] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.618] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.632] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.634] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.648] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.649] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.667] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.670] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.683] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.685] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.697] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.697] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.702] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.703] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.718] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.720] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.732] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.732] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.741] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.745] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.756] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.756] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.772] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.773] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.788] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.791] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.820] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.840] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.853] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.854] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.866] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.868] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.878] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.879] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.897] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.901] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.906] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.911] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.923] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.927] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.940] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.945] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.949] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.954] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.961] [DEBUG] mix - undefined
+[2019-01-04T14:30:00.980] [DEBUG] mix - 10000
+[2019-01-04T14:30:00.988] [DEBUG] mix - undefined
+[2019-01-04T14:30:01.000] [DEBUG] mix - 10000
+[2019-01-04T14:30:01.013] [DEBUG] mix - undefined
+[2019-01-04T14:30:01.014] [DEBUG] mix - 10000
+[2019-01-04T14:30:01.026] [DEBUG] mix - undefined
+[2019-01-04T14:30:01.028] [DEBUG] mix - 10000
+[2019-01-04T14:30:01.040] [DEBUG] mix - undefined
+[2019-01-04T14:30:01.044] [DEBUG] mix - 10000
+[2019-01-04T14:30:01.061] [DEBUG] mix - undefined
+[2019-01-04T14:30:01.081] [DEBUG] mix - 10000
+[2019-01-04T14:30:01.106] [DEBUG] mix - undefined
+[2019-01-04T14:30:01.110] [DEBUG] mix - 10000
+[2019-01-04T14:30:01.117] [DEBUG] mix - undefined
+[2019-01-04T14:30:01.122] [DEBUG] mix - 10000
+[2019-01-04T14:30:01.129] [DEBUG] mix - undefined
+[2019-01-04T14:30:01.137] [DEBUG] mix - 10000
+[2019-01-04T14:30:01.151] [DEBUG] mix - undefined
+[2019-01-04T14:30:01.172] [DEBUG] mix - 10000
+[2019-01-04T14:30:01.185] [DEBUG] mix - undefined
+[2019-01-04T14:30:01.186] [DEBUG] mix - 10000
+[2019-01-04T14:30:01.195] [DEBUG] mix - undefined
+[2019-01-04T14:30:01.199] [DEBUG] mix - 10000
+[2019-01-04T14:34:32.405] [INFO] mix - get all consumer
+[2019-01-04T14:34:32.499] [DEBUG] mix - 2
+[2019-01-04T14:34:32.621] [DEBUG] mix - 7
+[2019-01-04T14:34:32.654] [DEBUG] mix - 2
+[2019-01-04T14:34:32.665] [DEBUG] mix - 7
+[2019-01-04T14:34:32.676] [DEBUG] mix - 3
+[2019-01-04T14:34:32.681] [DEBUG] mix - 3
+[2019-01-04T14:34:32.688] [DEBUG] mix - 4
+[2019-01-04T14:34:32.691] [DEBUG] mix - 4
+[2019-01-04T14:34:32.695] [DEBUG] mix - 5
+[2019-01-04T14:34:32.699] [DEBUG] mix - 5
+[2019-01-04T14:34:32.705] [DEBUG] mix - 6
+[2019-01-04T14:34:32.710] [DEBUG] mix - 6
+[2019-01-04T14:34:32.714] [DEBUG] mix - 8
+[2019-01-04T14:34:32.723] [DEBUG] mix - 8
+[2019-01-04T14:34:32.727] [DEBUG] mix - 9
+[2019-01-04T14:34:32.731] [DEBUG] mix - 9
+[2019-01-04T14:34:32.739] [DEBUG] mix - 10
+[2019-01-04T14:34:32.743] [DEBUG] mix - 10
+[2019-01-04T14:34:32.748] [DEBUG] mix - 11
+[2019-01-04T14:34:32.755] [DEBUG] mix - 11
+[2019-01-04T14:34:32.759] [DEBUG] mix - 12
+[2019-01-04T14:34:32.765] [DEBUG] mix - 12
+[2019-01-04T14:34:32.771] [DEBUG] mix - 13
+[2019-01-04T14:34:32.776] [DEBUG] mix - 13
+[2019-01-04T14:34:32.781] [DEBUG] mix - 14
+[2019-01-04T14:34:32.786] [DEBUG] mix - 14
+[2019-01-04T14:34:32.791] [DEBUG] mix - 15
+[2019-01-04T14:34:32.795] [DEBUG] mix - 15
+[2019-01-04T14:34:32.800] [DEBUG] mix - 16
+[2019-01-04T14:34:32.806] [DEBUG] mix - 16
+[2019-01-04T14:34:32.811] [DEBUG] mix - 17
+[2019-01-04T14:34:32.815] [DEBUG] mix - 17
+[2019-01-04T14:34:32.821] [DEBUG] mix - 18
+[2019-01-04T14:34:32.825] [DEBUG] mix - 18
+[2019-01-04T14:36:58.105] [INFO] mix - get all consumer
+[2019-01-04T14:36:58.191] [DEBUG] mix - 2
+[2019-01-04T14:36:58.268] [DEBUG] mix - 7
+[2019-01-04T14:36:58.342] [DEBUG] mix - 6
+[2019-01-04T14:36:58.351] [DEBUG] mix - 2
+[2019-01-04T14:36:58.357] [DEBUG] mix - 7
+[2019-01-04T14:36:58.363] [DEBUG] mix - 3
+[2019-01-04T14:36:58.373] [DEBUG] mix - 3
+[2019-01-04T14:36:58.381] [DEBUG] mix - 4
+[2019-01-04T14:36:58.394] [DEBUG] mix - 4
+[2019-01-04T14:36:58.400] [DEBUG] mix - 5
+[2019-01-04T14:36:58.408] [DEBUG] mix - 5
+[2019-01-04T14:36:58.412] [DEBUG] mix - 6
+[2019-01-04T14:36:58.416] [DEBUG] mix - 8
+[2019-01-04T14:36:58.420] [DEBUG] mix - 8
+[2019-01-04T14:36:58.427] [DEBUG] mix - 9
+[2019-01-04T14:36:58.432] [DEBUG] mix - 9
+[2019-01-04T14:36:58.440] [DEBUG] mix - 10
+[2019-01-04T14:36:58.444] [DEBUG] mix - 10
+[2019-01-04T14:36:58.449] [DEBUG] mix - 11
+[2019-01-04T14:36:58.454] [DEBUG] mix - 11
+[2019-01-04T14:36:58.464] [DEBUG] mix - 12
+[2019-01-04T14:36:58.467] [DEBUG] mix - 12
+[2019-01-04T14:36:58.474] [DEBUG] mix - 13
+[2019-01-04T14:36:58.477] [DEBUG] mix - 13
+[2019-01-04T14:36:58.482] [DEBUG] mix - 14
+[2019-01-04T14:36:58.486] [DEBUG] mix - 14
+[2019-01-04T14:36:58.493] [DEBUG] mix - 15
+[2019-01-04T14:36:58.497] [DEBUG] mix - 15
+[2019-01-04T14:36:58.501] [DEBUG] mix - 16
+[2019-01-04T14:36:58.508] [DEBUG] mix - 16
+[2019-01-04T14:36:58.512] [DEBUG] mix - 17
+[2019-01-04T14:36:58.516] [DEBUG] mix - 17
+[2019-01-04T14:36:58.526] [DEBUG] mix - 18
+[2019-01-04T14:36:58.531] [DEBUG] mix - 18
+[2019-01-04T14:36:58.535] [DEBUG] mix - 20
+[2019-01-04T14:36:58.543] [DEBUG] mix - 20
+[2019-01-04T14:36:58.547] [DEBUG] mix - 21
+[2019-01-04T14:37:40.021] [INFO] mix - get all consumer
+[2019-01-04T14:38:00.060] [INFO] mix - get all consumer
+[2019-01-04T14:38:00.148] [DEBUG] mix - 2
+[2019-01-04T14:38:00.150] [DEBUG] mix - TextRow {
+  event_num: '15160120',
+  event_date: '2015-07-04',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Gavin',
+  event_name: 'EMBA晚宴',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 3 - Private Dinner',
+  event_audience_type: 'Consumer - Private Dinner',
+  event_member_num: '14',
+  event_others: '-',
+  event_applicant: 'Fiona',
+  event_apply_dept: 'Direct Sales',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.275] [DEBUG] mix - 7
+[2019-01-04T14:38:00.283] [DEBUG] mix - TextRow {
+  event_num: '15160090',
+  event_date: '2015-06-17',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Gavin',
+  event_name: 'July\'s Bar',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Consumer - #1 & #2',
+  event_member_num: '15',
+  event_others: 'Chris',
+  event_applicant: 'Chris',
+  event_apply_dept: 'Direct Sales',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.323] [DEBUG] mix - 5
+[2019-01-04T14:38:00.326] [DEBUG] mix - TextRow {
+  event_num: '15160220',
+  event_date: '2015-08-27',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Gavin',
+  event_name: '和容轩晚宴',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 3 - Private Dinner',
+  event_audience_type: 'Consumer - Private Dinner',
+  event_member_num: '18',
+  event_others: 'Christopher',
+  event_applicant: 'Christopher',
+  event_apply_dept: 'Direct Sales',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.331] [DEBUG] mix - 5
+[2019-01-04T14:38:00.332] [DEBUG] mix - TextRow {
+  event_num: '15160202',
+  event_date: '2015-08-13',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Richard',
+  event_name: 'TTM staff training III',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Trade - On',
+  event_member_num: '20',
+  event_others: '-',
+  event_applicant: 'Tina',
+  event_apply_dept: 'MKT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.339] [DEBUG] mix - 2
+[2019-01-04T14:38:00.340] [DEBUG] mix - TextRow {
+  event_num: '15160202',
+  event_date: '2015-08-13',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Richard',
+  event_name: 'TTM staff training III',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Trade - On',
+  event_member_num: '20',
+  event_others: '-',
+  event_applicant: 'Tina',
+  event_apply_dept: 'MKT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.344] [DEBUG] mix - 7
+[2019-01-04T14:38:00.344] [DEBUG] mix - TextRow {
+  event_num: '15160202',
+  event_date: '2015-08-13',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Richard',
+  event_name: 'TTM staff training III',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Trade - On',
+  event_member_num: '20',
+  event_others: '-',
+  event_applicant: 'Tina',
+  event_apply_dept: 'MKT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.352] [DEBUG] mix - 3
+[2019-01-04T14:38:00.353] [DEBUG] mix - TextRow {
+  event_num: '15160050',
+  event_date: '2015-05-21',
+  event_province: '青岛',
+  event_city: '青岛',
+  event_trainer: 'Gavin',
+  event_name: '海情酒店清吧',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Consumer - #1 & #2',
+  event_member_num: '6',
+  event_others: '-',
+  event_applicant: 'Gavin',
+  event_apply_dept: 'Training DPT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.357] [DEBUG] mix - 3
+[2019-01-04T14:38:00.359] [DEBUG] mix - TextRow {
+  event_num: '15160202',
+  event_date: '2015-08-13',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Richard',
+  event_name: 'TTM staff training III',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Trade - On',
+  event_member_num: '20',
+  event_others: '-',
+  event_applicant: 'Tina',
+  event_apply_dept: 'MKT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.363] [DEBUG] mix - 4
+[2019-01-04T14:38:00.364] [DEBUG] mix - TextRow {
+  event_num: '15160202',
+  event_date: '2015-08-13',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Richard',
+  event_name: 'TTM staff training III',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Trade - On',
+  event_member_num: '20',
+  event_others: '-',
+  event_applicant: 'Tina',
+  event_apply_dept: 'MKT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.371] [DEBUG] mix - 4
+[2019-01-04T14:38:00.371] [DEBUG] mix - TextRow {
+  event_num: '15160240',
+  event_date: '2015-09-22',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Gavin',
+  event_name: 'Vance TIKI晚宴',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 3 - Private Dinner',
+  event_audience_type: 'Consumer - Private Dinner',
+  event_member_num: '15',
+  event_others: 'Christopher',
+  event_applicant: 'Christopher',
+  event_apply_dept: 'Direct Sales',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.376] [DEBUG] mix - 6
+[2019-01-04T14:38:00.377] [DEBUG] mix - TextRow {
+  event_num: '15160050',
+  event_date: '2015-05-21',
+  event_province: '青岛',
+  event_city: '青岛',
+  event_trainer: 'Gavin',
+  event_name: '海情酒店清吧',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Consumer - #1 & #2',
+  event_member_num: '6',
+  event_others: '-',
+  event_applicant: 'Gavin',
+  event_apply_dept: 'Training DPT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.384] [DEBUG] mix - 6
+[2019-01-04T14:38:00.385] [DEBUG] mix - TextRow {
+  event_num: '15160202',
+  event_date: '2015-08-13',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Richard',
+  event_name: 'TTM staff training III',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Trade - On',
+  event_member_num: '20',
+  event_others: '-',
+  event_applicant: 'Tina',
+  event_apply_dept: 'MKT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.390] [DEBUG] mix - 8
+[2019-01-04T14:38:00.390] [DEBUG] mix - TextRow {
+  event_num: '15160240',
+  event_date: '2015-09-22',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Gavin',
+  event_name: 'Vance TIKI晚宴',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 3 - Private Dinner',
+  event_audience_type: 'Consumer - Private Dinner',
+  event_member_num: '15',
+  event_others: 'Christopher',
+  event_applicant: 'Christopher',
+  event_apply_dept: 'Direct Sales',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.397] [DEBUG] mix - 8
+[2019-01-04T14:38:00.398] [DEBUG] mix - TextRow {
+  event_num: '15160202',
+  event_date: '2015-08-13',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Richard',
+  event_name: 'TTM staff training III',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Trade - On',
+  event_member_num: '20',
+  event_others: '-',
+  event_applicant: 'Tina',
+  event_apply_dept: 'MKT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.404] [DEBUG] mix - 9
+[2019-01-04T14:38:00.405] [DEBUG] mix - TextRow {
+  event_num: '15160180',
+  event_date: '2015-08-05',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Gavin',
+  event_name: 'Tiki China 客户',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 3 - Private Dinner',
+  event_audience_type: 'Consumer - Private Dinner',
+  event_member_num: '14',
+  event_others: 'Christopher',
+  event_applicant: 'Fiona',
+  event_apply_dept: 'Direct Sales',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.408] [DEBUG] mix - 9
+[2019-01-04T14:38:00.408] [DEBUG] mix - TextRow {
+  event_num: '15160202',
+  event_date: '2015-08-13',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Richard',
+  event_name: 'TTM staff training III',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Trade - On',
+  event_member_num: '20',
+  event_others: '-',
+  event_applicant: 'Tina',
+  event_apply_dept: 'MKT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.413] [DEBUG] mix - 10
+[2019-01-04T14:38:00.414] [DEBUG] mix - TextRow {
+  event_num: '15160240',
+  event_date: '2015-09-22',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Gavin',
+  event_name: 'Vance TIKI晚宴',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 3 - Private Dinner',
+  event_audience_type: 'Consumer - Private Dinner',
+  event_member_num: '15',
+  event_others: 'Christopher',
+  event_applicant: 'Christopher',
+  event_apply_dept: 'Direct Sales',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.421] [DEBUG] mix - 10
+[2019-01-04T14:38:00.422] [DEBUG] mix - TextRow {
+  event_num: '15160202',
+  event_date: '2015-08-13',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Richard',
+  event_name: 'TTM staff training III',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Trade - On',
+  event_member_num: '20',
+  event_others: '-',
+  event_applicant: 'Tina',
+  event_apply_dept: 'MKT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.430] [DEBUG] mix - 11
+[2019-01-04T14:38:00.430] [DEBUG] mix - TextRow {
+  event_num: '15160220',
+  event_date: '2015-08-27',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Gavin',
+  event_name: '和容轩晚宴',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 3 - Private Dinner',
+  event_audience_type: 'Consumer - Private Dinner',
+  event_member_num: '18',
+  event_others: 'Christopher',
+  event_applicant: 'Christopher',
+  event_apply_dept: 'Direct Sales',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.433] [DEBUG] mix - 11
+[2019-01-04T14:38:00.434] [DEBUG] mix - TextRow {
+  event_num: '15160202',
+  event_date: '2015-08-13',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Richard',
+  event_name: 'TTM staff training III',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Trade - On',
+  event_member_num: '20',
+  event_others: '-',
+  event_applicant: 'Tina',
+  event_apply_dept: 'MKT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.440] [DEBUG] mix - 12
+[2019-01-04T14:38:00.440] [DEBUG] mix - TextRow {
+  event_num: '15160080',
+  event_date: '2015-06-12',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Angel',
+  event_name: 'FAIRTION奢侈品公司（ 员工培训）',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Consumer - #1 & #2',
+  event_member_num: '10',
+  event_others: '-',
+  event_applicant: 'Angel',
+  event_apply_dept: 'Training DPT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.446] [DEBUG] mix - 12
+[2019-01-04T14:38:00.447] [DEBUG] mix - TextRow {
+  event_num: '15160202',
+  event_date: '2015-08-13',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Richard',
+  event_name: 'TTM staff training III',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Trade - On',
+  event_member_num: '20',
+  event_others: '-',
+  event_applicant: 'Tina',
+  event_apply_dept: 'MKT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.453] [DEBUG] mix - 13
+[2019-01-04T14:38:00.453] [DEBUG] mix - TextRow {
+  event_num: '15160240',
+  event_date: '2015-09-22',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Gavin',
+  event_name: 'Vance TIKI晚宴',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 3 - Private Dinner',
+  event_audience_type: 'Consumer - Private Dinner',
+  event_member_num: '15',
+  event_others: 'Christopher',
+  event_applicant: 'Christopher',
+  event_apply_dept: 'Direct Sales',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.457] [DEBUG] mix - 13
+[2019-01-04T14:38:00.457] [DEBUG] mix - TextRow {
+  event_num: '15160202',
+  event_date: '2015-08-13',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Richard',
+  event_name: 'TTM staff training III',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Trade - On',
+  event_member_num: '20',
+  event_others: '-',
+  event_applicant: 'Tina',
+  event_apply_dept: 'MKT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.464] [DEBUG] mix - 14
+[2019-01-04T14:38:00.465] [DEBUG] mix - TextRow {
+  event_num: '15160220',
+  event_date: '2015-08-27',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Gavin',
+  event_name: '和容轩晚宴',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 3 - Private Dinner',
+  event_audience_type: 'Consumer - Private Dinner',
+  event_member_num: '18',
+  event_others: 'Christopher',
+  event_applicant: 'Christopher',
+  event_apply_dept: 'Direct Sales',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.470] [DEBUG] mix - 14
+[2019-01-04T14:38:00.470] [DEBUG] mix - TextRow {
+  event_num: '15160202',
+  event_date: '2015-08-13',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Richard',
+  event_name: 'TTM staff training III',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Trade - On',
+  event_member_num: '20',
+  event_others: '-',
+  event_applicant: 'Tina',
+  event_apply_dept: 'MKT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.477] [DEBUG] mix - 15
+[2019-01-04T14:38:00.477] [DEBUG] mix - TextRow {
+  event_num: '15160220',
+  event_date: '2015-08-27',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Gavin',
+  event_name: '和容轩晚宴',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 3 - Private Dinner',
+  event_audience_type: 'Consumer - Private Dinner',
+  event_member_num: '18',
+  event_others: 'Christopher',
+  event_applicant: 'Christopher',
+  event_apply_dept: 'Direct Sales',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.482] [DEBUG] mix - 15
+[2019-01-04T14:38:00.485] [DEBUG] mix - TextRow {
+  event_num: '15160202',
+  event_date: '2015-08-13',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Richard',
+  event_name: 'TTM staff training III',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Trade - On',
+  event_member_num: '20',
+  event_others: '-',
+  event_applicant: 'Tina',
+  event_apply_dept: 'MKT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.490] [DEBUG] mix - 16
+[2019-01-04T14:38:00.491] [DEBUG] mix - TextRow {
+  event_num: '15160220',
+  event_date: '2015-08-27',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Gavin',
+  event_name: '和容轩晚宴',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 3 - Private Dinner',
+  event_audience_type: 'Consumer - Private Dinner',
+  event_member_num: '18',
+  event_others: 'Christopher',
+  event_applicant: 'Christopher',
+  event_apply_dept: 'Direct Sales',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.495] [DEBUG] mix - 16
+[2019-01-04T14:38:00.497] [DEBUG] mix - TextRow {
+  event_num: '15160202',
+  event_date: '2015-08-13',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Richard',
+  event_name: 'TTM staff training III',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Trade - On',
+  event_member_num: '20',
+  event_others: '-',
+  event_applicant: 'Tina',
+  event_apply_dept: 'MKT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.501] [DEBUG] mix - 17
+[2019-01-04T14:38:00.502] [DEBUG] mix - TextRow {
+  event_num: '15160080',
+  event_date: '2015-06-12',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Angel',
+  event_name: 'FAIRTION奢侈品公司（ 员工培训）',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Consumer - #1 & #2',
+  event_member_num: '10',
+  event_others: '-',
+  event_applicant: 'Angel',
+  event_apply_dept: 'Training DPT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.507] [DEBUG] mix - 17
+[2019-01-04T14:38:00.508] [DEBUG] mix - TextRow {
+  event_num: '15160202',
+  event_date: '2015-08-13',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Richard',
+  event_name: 'TTM staff training III',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Trade - On',
+  event_member_num: '20',
+  event_others: '-',
+  event_applicant: 'Tina',
+  event_apply_dept: 'MKT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.514] [DEBUG] mix - 18
+[2019-01-04T14:38:00.514] [DEBUG] mix - TextRow {
+  event_num: '15160030',
+  event_date: '2015-05-09',
+  event_province: '佛山',
+  event_city: '佛山',
+  event_trainer: 'Foxyie',
+  event_name: '佛山市9号花园餐厅服务人员培训',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Trade - On',
+  event_member_num: '8',
+  event_others: '-',
+  event_applicant: 'Foxyie',
+  event_apply_dept: 'Training DPT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.522] [DEBUG] mix - 18
+[2019-01-04T14:38:00.523] [DEBUG] mix - TextRow {
+  event_num: '15160202',
+  event_date: '2015-08-13',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Richard',
+  event_name: 'TTM staff training III',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Trade - On',
+  event_member_num: '20',
+  event_others: '-',
+  event_applicant: 'Tina',
+  event_apply_dept: 'MKT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.526] [DEBUG] mix - 20
+[2019-01-04T14:38:00.526] [DEBUG] mix - TextRow {
+  event_num: '15160120',
+  event_date: '2015-07-04',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Gavin',
+  event_name: 'EMBA晚宴',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 3 - Private Dinner',
+  event_audience_type: 'Consumer - Private Dinner',
+  event_member_num: '14',
+  event_others: '-',
+  event_applicant: 'Fiona',
+  event_apply_dept: 'Direct Sales',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.536] [DEBUG] mix - 20
+[2019-01-04T14:38:00.537] [DEBUG] mix - TextRow {
+  event_num: '15160202',
+  event_date: '2015-08-13',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Richard',
+  event_name: 'TTM staff training III',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Trade - On',
+  event_member_num: '20',
+  event_others: '-',
+  event_applicant: 'Tina',
+  event_apply_dept: 'MKT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
+[2019-01-04T14:38:00.541] [DEBUG] mix - 21
+[2019-01-04T14:38:00.542] [DEBUG] mix - TextRow {
+  event_num: '15160080',
+  event_date: '2015-06-12',
+  event_province: '上海',
+  event_city: '上海',
+  event_trainer: 'Angel',
+  event_name: 'FAIRTION奢侈品公司（ 员工培训）',
+  event_location: null,
+  event_location_type: null,
+  event_address: null,
+  event_training_type: 'Type 1 & 2',
+  event_audience_type: 'Consumer - #1 & #2',
+  event_member_num: '10',
+  event_others: '-',
+  event_applicant: 'Angel',
+  event_apply_dept: 'Training DPT',
+  event_organize: null,
+  event_organize_contact: null,
+  event_organize_info: null,
+  trainer_reports: null,
+  mgr_comments: null }
