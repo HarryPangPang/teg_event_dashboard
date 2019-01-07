@@ -336,8 +336,6 @@ function CreateUpdatedgetAllConsumerTimelyWork() {
 //     createTimlyWorkCollection: createTimlyWorkCollection()
 // }
 
-
-
 // 创建每个月参加活动的人数的表(接口已废弃)
 // router.get('/getAllEventMemberNum', function (req, res, next) {
 // var beginTime = +new Date();
