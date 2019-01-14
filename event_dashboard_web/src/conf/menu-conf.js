@@ -1,4 +1,4 @@
-module.exports = [
+let menuConf = [
     {
         name: '报表可视化',
         id: 'dashboard1',
@@ -26,3 +26,5 @@ module.exports = [
         ]
     }
 ]
+
+export default menuConf;

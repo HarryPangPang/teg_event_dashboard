@@ -37,12 +37,15 @@ export default {
     };
   },
 methods: {
+  /* eslint-disable */
       handleOpen(key, keyPath) {
-        // console.log(key, keyPath);
+
+        console.log(key, keyPath);
         return;
       },
       handleClose(key, keyPath) {
-        // console.log(key, keyPath);
+
+        console.log(key, keyPath);
         return;
       }
     }
