@@ -85,6 +85,8 @@ export default {
       this.unUsefulPhoneNum = unUsefulMobileConsumer.length;
       if(usefulMobileConsumer.length&&unUsefulMobileConsumer.length){
         this.loading = false
+      }else{
+        this.loading = false
       }
     },
     async getAllData() {

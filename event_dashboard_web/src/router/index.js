@@ -4,7 +4,8 @@ import ConsumerDashBoard from '../components/ConsumerDashBoard'
 import searchConsumerInfo from '../components/searchConsumerInfo'
 import eventDashboard from '../components/eventDashboard'
 import searchEventInfo from '../components/searchEventInfo'
-
+import uploadMonthlyConsumer from '../components/uploadMonthlyConsumer'
+import uploadMonthlyEvents from '../components/uploadMonthlyEvents'
 Vue.use(Router)
 // 路由配置
 export default new Router({
@@ -34,6 +35,16 @@ export default new Router({
       path: '/eventDashboard',
       name:'eventDashboard',
       component: eventDashboard
+    },
+    {
+      path: '/uploadMonthlyConsumer',
+      name:'uploadMonthlyConsumer',
+      component: uploadMonthlyConsumer
+    },
+    {
+      path: '/uploadMonthlyEvents',
+      name:'uploadMonthlyEvents',
+      component: uploadMonthlyEvents
     }
   ]
 })

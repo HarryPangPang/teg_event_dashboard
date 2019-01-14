@@ -24,6 +24,19 @@ let menuConf = [
                 componentName: 'searchEventInfo'
             }
         ]
+    },
+    {
+        name: '报表上传',
+        id: 'dashboard3',
+        sub: [
+            {   
+                name: '活动',
+                componentName: 'uploadMonthlyEvents'
+            }, {
+                name: '客户',
+                componentName: 'uploadMonthlyConsumer'
+            }
+        ]
     }
 ]
 
