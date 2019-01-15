@@ -5,7 +5,9 @@ var eventApi = {
     searchConsumerInfoByPhone:'http://localhost:3000/apiConsumer/searchConsumerInfoByPhone',
     getConsumerCameWhichEvent:'http://localhost:3000/apiConsumer/getEvenrCamers',
     getConsumerSCameWhichEvent:'http://localhost:3000/apiConsumer/getAllEventMemberNum',
-    getUpdatedgetAllConsumer:'http://localhost:3000/apiConsumer/getUpdatedgetAllConsumer'
+    getUpdatedgetAllConsumer:'http://localhost:3000/apiConsumer/getUpdatedgetAllConsumer',
+    uploadEventExcel:'http://localhost:3000/apiConsumer/uploadEventExcel',
+    uploadConsumerExcel:'http://localhost:3000/apiConsumer/uploadConsumerExcel'
 }
 
 export default eventApi

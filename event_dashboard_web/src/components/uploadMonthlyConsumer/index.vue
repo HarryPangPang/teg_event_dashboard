@@ -1,27 +1,32 @@
 <template>
-    <el-upload
-      style="display: inline; margin-left: 10px;margin-right: 10px;"
-      action="#"
-      ref="fileupload"
-      :show-file-list="false"
-      :http-request="upLoadChange"
-      :before-upload="beforeUpload">
-      <el-button size="small" type="primary">上传文件<i class="el-icon-upload el-icon--right"></i></el-button>
-    </el-upload>
+  <el-upload
+  class="upload-demo"
+  ref="upload"
+  action="http://localhost:3000/apiConsumer/uploadEventExcel"
+  :on-change="handleChange"
+  :file-list="fileList"
+  :limit="1"
+  :auto-upload="false">
+  <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
+  <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
+  <div slot="tip" class="el-upload__tip">上传excel</div>
+</el-upload>
 </template>
-<script>
-export default {
-  name: "uploadMonthlyEvents",
-  data() {
-    return {
-        msg:'欢迎进入'
-    };
-  },
-  methods: {
-  }
-};
-</script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-</style>
+<script>
+  export default {
+    data() {
+      return {
+        fileList: []
+      };
+    },
+    methods: {
+      submitUpload() {
+        this.$refs.upload.submit();
+      },
+      handleChange(file, fileList) {
+        console.log(file, fileList);
+      },
+    }
+  }
+</script>

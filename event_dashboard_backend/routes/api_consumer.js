@@ -97,14 +97,14 @@ function _getAllConsumer() {
 // 根据活动编号查询活动信息
 function _searchConsumerEvent(eventNum) {
     return new Promise(resolve => {
-    mysqlpool.query(curd_consumer.searchConsumerEvent, eventNum, function (err, rows, fields) {
-        if (err) {
-            logger.error(err);
-            return;
-        } else {
-            resolve(rows)
-        }
-    });
+        mysqlpool.query(curd_consumer.searchConsumerEvent, eventNum, function (err, rows, fields) {
+            if (err) {
+                logger.error(err);
+                return;
+            } else {
+                resolve(rows)
+            }
+        });
     })
 }
 // 模糊查询某一场活动来了多少人
@@ -206,10 +206,10 @@ function _getUpdatedgetAllConsumer() {
 function filterAllConsumerLinkEvent() {
     return new Promise(resolve => {
         _getAllConsumer().then(res => {
-            var lonelyData =res
-            var newConsumerRowDataArr =[]
+            var lonelyData = res
+            var newConsumerRowDataArr = []
             var newConsumerRowDataArrOnly = []
-            for(var j=0;j<lonelyData.length;j++){
+            for (var j = 0; j < lonelyData.length; j++) {
                 let newConsumerRowData = {
                     consumer_id: lonelyData[j].id,
                     event_numid: lonelyData[j].event_num,
@@ -225,15 +225,15 @@ function filterAllConsumerLinkEvent() {
                     mysqlpool.query(curd_consumer.searchConsumerEvent, newConsumerRowData.event_num[i], function (err, rows, fields) {
                         if (err) {
                             throw err;
-                        } else if(rows[0] ==undefined || rows[0] ==''){
-                            logger.debug('rows[0]undefined'+newConsumerRowData.consumer_id)
+                        } else if (rows[0] == undefined || rows[0] == '') {
+                            logger.debug('rows[0]undefined' + newConsumerRowData.consumer_id)
                         }
-                        else {  
+                        else {
                             newConsumerRowData.event_apply_dept.push(rows[0].event_apply_dept)
                             newConsumerRowData.event_audience_type.push(rows[0].event_audience_type)
                             newConsumerRowDataArr.push(newConsumerRowData)
                             newConsumerRowDataArrOnly = [...new Set(newConsumerRowDataArr)]
-                            if(newConsumerRowDataArrOnly.length == lonelyData.length){
+                            if (newConsumerRowDataArrOnly.length == lonelyData.length) {
                                 logger.info('newConsumerRowDataArrOnly resolve done')
                                 resolve(newConsumerRowDataArrOnly)
                             }
@@ -262,26 +262,26 @@ function createNewAllConsumerLinkEvent(reson) {
                 resonDate[ii].event_apply_dept.join(',').toString()
             ],
                 function (err, rows, fields) {
-                if (err) {
-                    logger.error(err)
-                    throw err
-                }
-            })
+                    if (err) {
+                        logger.error(err)
+                        throw err
+                    }
+                })
         }
     })
 }
 // 创建活动客户关联活动数据表定时任务
 function CreateUpdatedAllConsumerLinkEventTimelyWork() {
-    return new Promise(resolve=>{
+    return new Promise(resolve => {
         clearAllConsumerLinkEvent().then((resp) => {
             logger.info('clearAllConsumerLinkEvent done')
             if (resp == '1') {
-                filterAllConsumerLinkEvent().then(resp=>{
+                filterAllConsumerLinkEvent().then(resp => {
                     logger.info('filterAllConsumerLinkEvent done')
-                        createNewAllConsumerLinkEvent(resp).then(resp=>{
-                            logger.info(`CreateUpdatedAllConsumerLinkEventTimelyWork Add successfully`)
-                            resolve('1')
-                        })
+                    createNewAllConsumerLinkEvent(resp).then(resp => {
+                        logger.info(`CreateUpdatedAllConsumerLinkEventTimelyWork Add successfully`)
+                        resolve('1')
+                    })
                 })
             }
         })
@@ -290,7 +290,7 @@ function CreateUpdatedAllConsumerLinkEventTimelyWork() {
 
 // 创建活动客户数据表定时任务s
 function CreateUpdatedgetAllConsumerTimelyWork() {
-    return new Promise(resolve=>{
+    return new Promise(resolve => {
         clearAllEventMenberNumTmp().then((resp) => {
             if (resp == '1') {
                 logger.info('clearAllEventMenberNumTmp done')
@@ -388,7 +388,7 @@ router.get('/getAllEvent', function (req, res, next) {
 
 // 根据活动编号查询活动信息
 router.post('/searchConsumerEvent', function (req, res, next) {
-    _searchConsumerEvent(req.body.event_num).then(data=>{
+    _searchConsumerEvent(req.body.event_num).then(data => {
         res.send(data)
     })
 });
@@ -405,6 +405,39 @@ router.post('/searchConsumerInfoByPhone', function (req, res, next) {
             return;
         }
     })
+});
+
+//文件上传
+
+// const upload = multer({ dest: 'uploads/' });
+
+// router.post('/uploadEventExcel',upload.single('file'), (req, res)=>{
+//     var file = req.file;
+//     logger.debug(file)
+//     res.send(file)
+//   })
+// var uploadFolder = '../uploads/';
+
+// 通过 filename 属性定制
+var multer = require('multer')
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        // 保存的路径，备注：需要自己创建
+        cb(null, 'uploads/');
+    },
+    filename: function (req, file, cb) {
+        // 将保存文件名设置为 字段名 + 文件格式
+        // let a = (file.mimetype).toString()
+        // let filetype = a.match(/\/(.*)/)[1]
+        cb(null, file.originalname);
+    }
+});
+// 通过 storage 选项来对 上传行为 进行定制化
+var upload = multer({ storage: storage })
+// 上传接口
+router.post('/uploadEventExcel', upload.single('file'), function (req, res, next) {
+    var file = req.file;
+    res.send(file)
 });
 
 module.exports = router;
