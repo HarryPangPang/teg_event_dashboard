@@ -359,7 +359,6 @@ function CreateUpdatedgetAllConsumerTimelyWork() {
         })
     })
 }
-CreateUpdatedAllConsumerLinkEventTimelyWork()
 // 有问题！
 // function createTimlyWorkCollection(){
 //     CreateUpdatedgetAllConsumerTimelyWork().then(res=>{
