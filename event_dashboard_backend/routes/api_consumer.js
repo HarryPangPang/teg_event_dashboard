@@ -328,6 +328,7 @@ function CreateUpdatedAllConsumerLinkEventTimelyWork() {
                     logger.info('filterAllConsumerLinkEvent done')
                     createNewAllConsumerLinkEvent(resp).then(resp => {
                         logger.info(`CreateUpdatedAllConsumerLinkEventTimelyWork Add successfully`)
+                        rs
                         resolve('1')
                     })
                 })
@@ -370,8 +371,6 @@ function CreateUpdatedgetAllConsumerTimelyWork() {
 //          })
 //         }
 //     })
-// }
-
 
 // 配置定时任务
 // function scheduleCronstyle() {
