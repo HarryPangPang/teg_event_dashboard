@@ -420,6 +420,7 @@ router.post('/searchConsumerInfoByPhone', function (req, res, next) {
 
 // 通过 filename 属性定制
 var multer = require('multer')
+var uploadFileName = ''
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         // 保存的路径，备注：需要自己创建
@@ -429,6 +430,7 @@ var storage = multer.diskStorage({
         // 将保存文件名设置为 字段名 + 文件格式
         // let a = (file.mimetype).toString()
         // let filetype = a.match(/\/(.*)/)[1]
+        uploadFileName = file.originalname
         cb(null, file.originalname);
     }
 });
@@ -439,5 +441,4 @@ router.post('/uploadEventExcel', upload.single('file'), function (req, res, next
     var file = req.file;
     res.send(file)
 });
-
 module.exports = router;
