@@ -65,6 +65,27 @@ function _defineLocalStorage() {
 _defineLocalStorage()
 // 设置localstorage end
 
+//配置multer文件上传
+// 通过 filename 属性定制
+var multer = require('multer')
+var uploadFileName = ''
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        // 保存的路径，备注：需要自己创建
+        cb(null, 'uploads/');
+    },
+    filename: function (req, file, cb) {
+        // 将保存文件名设置为 字段名 + 文件格式
+        // let a = (file.mimetype).toString()
+        // let filetype = a.match(/\/(.*)/)[1]
+        uploadFileName = file.originalname
+        cb(null, file.originalname);
+    }
+});
+// 通过 storage 选项来对 上传行为 进行定制化
+var upload = multer({ storage: storage })
+
+
 // 获得所有活动
 function _getAllEvent() {
     return new Promise(resolve => {
@@ -150,38 +171,58 @@ function clearAllConsumerLinkEvent() {
 function filtNewEventMenmberDataArr(allEvent) {
     return new Promise(resolve => {
         var allEventNum = []
-        for (var i = 0, tpmallEventlen = allEvent.length; i < tpmallEventlen; i++) {
-            let allEventNumItem = {
-                eventNum: allEvent[i].event_num.trim(),
-                eventDate: allEvent[i].event_date.trim(),
-                eventProvince: allEvent[i].event_province.trim(),
-                memberNum: 0
-            }
-            mysqlpool.query(curd_consumer.getConsumerCameWhichEvent, allEvent[i].event_num, function (err, rows, fields) {
-                if (err) {
-                    logger.error(err)
-                    throw err
-                } else {
-                    allEventNumItem.memberNum = rows.length
-                    allEventNum.push(allEventNumItem)
-                    if (allEventNum.length == tpmallEventlen) {
-                        resolve(allEventNum)
-                    }
+        if(allEvent.length === 0){
+            resolve(allEvent)
+        }else{
+            for (var i = 0, tpmallEventlen = allEvent.length; i < tpmallEventlen; i++) {
+                let allEventNumItem = {
+                    eventNum: allEvent[i].event_num.trim(),
+                    eventDate: allEvent[i].event_date.trim(),
+                    eventProvince: allEvent[i].event_province.trim(),
+                    memberNum: 0
                 }
-            })
+                mysqlpool.query(curd_consumer.getConsumerCameWhichEvent, allEvent[i].event_num, function (err, rows, fields) {
+                    if (err) {
+                        logger.error(err)
+                        throw err
+                    } else {
+                        allEventNumItem.memberNum = rows.length
+                        allEventNum.push(allEventNumItem)
+                        if (allEventNum.length === tpmallEventlen) {
+                            logger.info(allEventNum.length)
+                            resolve(allEventNum)
+                        }
+                    }
+                })
+            }
         }
+    })
+}
+
+function mysqlQuery(sql, values, cb,){
+    return new Promise((res)=>{
+        mysqlpool.query(sql, values, cb)
     })
 }
 // 创建每个月参加活动的人数的活动的表
 function createNewEventMenmberDataArr(reson) {
     return new Promise((resolve) => {
         let resonDate = reson
+        let rowsArr = []
         for (var ii = 0; ii < resonDate.length; ii++) {
             let insertAllEventMemberNumTmpsql = `INSERT INTO AllEventMemberNumTmp VALUES(?,?,?,?);`
-            mysqlpool.query(insertAllEventMemberNumTmpsql, [resonDate[ii].eventNum, resonDate[ii].eventDate, resonDate[ii].eventProvince, resonDate[ii].memberNum], function (err, rows, fields) {
+            let countAllEventNum = `select count(eventNum) from alleventmembernumtmp`
+            mysqlQuery(insertAllEventMemberNumTmpsql, [resonDate[ii].eventNum, resonDate[ii].eventDate, resonDate[ii].eventProvince, resonDate[ii].memberNum], function (err, rows, fields) {
                 if (err) {
                     logger.error(err)
                     throw err
+                }
+                else{
+                    rowsArr.push(rows)
+                    if(rowsArr.length === ii){
+                        rowsArr=[]
+                       resolve('1')
+                    }
                 }
             })
         }
@@ -249,6 +290,7 @@ function filterAllConsumerLinkEvent() {
 function createNewAllConsumerLinkEvent(reson) {
     return new Promise((resolve) => {
         let resonDate = reson
+        let rowsArr = []
         for (var ii = 0; ii < resonDate.length; ii++) {
             let insertAllConsumerLinkEvent = `INSERT INTO allconsumerlinkevent(consumer_id,event_numid,consumer_name,consumer_sex,contact_info1,contact_info2,event_audience_type,event_apply_dept) values(?,?,?,?,?,?,?,?)`
             mysqlpool.query(insertAllConsumerLinkEvent, [
@@ -265,6 +307,12 @@ function createNewAllConsumerLinkEvent(reson) {
                     if (err) {
                         logger.error(err)
                         throw err
+                    }else{
+                        rowsArr.push(rows)
+                        if(rowsArr.length === ii){
+                            resolve('1')
+                            rowsArr=[]
+                        }
                     }
                 })
         }
@@ -288,7 +336,7 @@ function CreateUpdatedAllConsumerLinkEventTimelyWork() {
     })
 }
 
-// 创建活动客户数据表定时任务s
+// 创建活动城市客户数据表定时任务s
 function CreateUpdatedgetAllConsumerTimelyWork() {
     return new Promise(resolve => {
         clearAllEventMenberNumTmp().then((resp) => {
@@ -311,7 +359,7 @@ function CreateUpdatedgetAllConsumerTimelyWork() {
         })
     })
 }
-
+CreateUpdatedAllConsumerLinkEventTimelyWork()
 // 有问题！
 // function createTimlyWorkCollection(){
 //     CreateUpdatedgetAllConsumerTimelyWork().then(res=>{
@@ -418,24 +466,7 @@ router.post('/searchConsumerInfoByPhone', function (req, res, next) {
 //   })
 // var uploadFolder = '../uploads/';
 
-// 通过 filename 属性定制
-var multer = require('multer')
-var uploadFileName = ''
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        // 保存的路径，备注：需要自己创建
-        cb(null, 'uploads/');
-    },
-    filename: function (req, file, cb) {
-        // 将保存文件名设置为 字段名 + 文件格式
-        // let a = (file.mimetype).toString()
-        // let filetype = a.match(/\/(.*)/)[1]
-        uploadFileName = file.originalname
-        cb(null, file.originalname);
-    }
-});
-// 通过 storage 选项来对 上传行为 进行定制化
-var upload = multer({ storage: storage })
+
 // 上传接口
 router.post('/uploadEventExcel', upload.single('file'), function (req, res, next) {
     var file = req.file;
