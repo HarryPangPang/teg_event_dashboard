@@ -259,7 +259,18 @@ function filterAllConsumerLinkEvent() {
                     consumer_sex: lonelyData[j].consumer_sex,
                     contact_info1: lonelyData[j].contact_info1,
                     contact_info2: lonelyData[j].contact_info2,
+                    event_province:[],
+                    event_city:[],
+                    event_trainer:[],
+                    event_name:[],
+                    event_location:[],
+                    event_location_type:[],
+                    event_address:[],
+                    event_training_type:[],
                     event_audience_type: [],
+                    event_member_num:[],
+                    event_others:[],
+                    event_applicant:[],
                     event_apply_dept: []
                 }
                 for (var i = 0; i < newConsumerRowData.event_num.length; i++) {
@@ -270,8 +281,19 @@ function filterAllConsumerLinkEvent() {
                             logger.debug('rows[0]undefined' + newConsumerRowData.consumer_id)
                         }
                         else {
-                            newConsumerRowData.event_apply_dept.push(rows[0].event_apply_dept)
+                            newConsumerRowData.event_province.push(rows[0].event_province)
+                            newConsumerRowData.event_city.push(rows[0].event_city)
+                            newConsumerRowData.event_trainer.push(rows[0].event_trainer)
+                            newConsumerRowData.event_name.push(rows[0].event_name)
+                            newConsumerRowData.event_location.push(rows[0].event_location)
+                            newConsumerRowData.event_location_type.push(rows[0].event_location_type)
+                            newConsumerRowData.event_address.push(rows[0].event_address)
+                            newConsumerRowData.event_training_type.push(rows[0].event_training_type)
                             newConsumerRowData.event_audience_type.push(rows[0].event_audience_type)
+                            newConsumerRowData.event_member_num.push(rows[0].event_member_num)
+                            newConsumerRowData.event_others.push(rows[0].event_others)
+                            newConsumerRowData.event_applicant.push(rows[0].event_applicant)
+                            newConsumerRowData.event_apply_dept.push(rows[0].event_apply_dept)
                             newConsumerRowDataArr.push(newConsumerRowData)
                             newConsumerRowDataArrOnly = [...new Set(newConsumerRowDataArr)]
                             if (newConsumerRowDataArrOnly.length == lonelyData.length) {
@@ -291,8 +313,9 @@ function createNewAllConsumerLinkEvent(reson) {
     return new Promise((resolve) => {
         let resonDate = reson
         let rowsArr = []
+        let tableTitles ="consumer_id,event_numid,consumer_name,consumer_sex,contact_info1,contact_info2,event_province,event_city,event_trainer,event_name,event_location,event_location_type,event_address,event_training_type,event_audience_type,event_member_num,event_others,event_applicant,event_apply_dept"
         for (var ii = 0; ii < resonDate.length; ii++) {
-            let insertAllConsumerLinkEvent = `INSERT INTO allconsumerlinkevent(consumer_id,event_numid,consumer_name,consumer_sex,contact_info1,contact_info2,event_audience_type,event_apply_dept) values(?,?,?,?,?,?,?,?)`
+            let insertAllConsumerLinkEvent = `INSERT INTO allconsumerlinkevent (${tableTitles}) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
             mysqlpool.query(insertAllConsumerLinkEvent, [
                 resonDate[ii].consumer_id,
                 resonDate[ii].event_numid,
@@ -300,7 +323,18 @@ function createNewAllConsumerLinkEvent(reson) {
                 resonDate[ii].consumer_sex,
                 resonDate[ii].contact_info1,
                 resonDate[ii].contact_info2,
+                resonDate[ii].event_province.join(',').toString(),
+                resonDate[ii].event_city.join(',').toString(),
+                resonDate[ii].event_trainer.join(',').toString(),
+                resonDate[ii].event_name.join(',').toString(),
+                resonDate[ii].event_location.join(',').toString(),
+                resonDate[ii].event_location_type.join(',').toString(),
+                resonDate[ii].event_address.join(',').toString(),
+                resonDate[ii].event_training_type.join(',').toString(),
                 resonDate[ii].event_audience_type.join(',').toString(),
+                resonDate[ii].event_member_num.join(',').toString(),
+                resonDate[ii].event_others.join(',').toString(),
+                resonDate[ii].event_applicant.join(',').toString(),
                 resonDate[ii].event_apply_dept.join(',').toString()
             ],
                 function (err, rows, fields) {
@@ -328,7 +362,6 @@ function CreateUpdatedAllConsumerLinkEventTimelyWork() {
                     logger.info('filterAllConsumerLinkEvent done')
                     createNewAllConsumerLinkEvent(resp).then(resp => {
                         logger.info(`CreateUpdatedAllConsumerLinkEventTimelyWork Add successfully`)
-                        rs
                         resolve('1')
                     })
                 })
@@ -360,6 +393,8 @@ function CreateUpdatedgetAllConsumerTimelyWork() {
         })
     })
 }
+
+CreateUpdatedAllConsumerLinkEventTimelyWork()
 // 有问题！
 // function createTimlyWorkCollection(){
 //     CreateUpdatedgetAllConsumerTimelyWork().then(res=>{
