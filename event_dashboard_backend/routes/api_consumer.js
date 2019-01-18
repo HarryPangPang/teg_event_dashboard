@@ -394,18 +394,21 @@ function CreateUpdatedgetAllConsumerTimelyWork() {
     })
 }
 
-CreateUpdatedAllConsumerLinkEventTimelyWork()
+// CreateUpdatedAllConsumerLinkEventTimelyWork()
+
+
 // 有问题！
-// function createTimlyWorkCollection(){
-//     CreateUpdatedgetAllConsumerTimelyWork().then(res=>{
-//         if(res == '1'){
-//          CreateUpdatedAllConsumerLinkEventTimelyWork().then(res=>{
-//              if(res =='1'){
-//                  logger.info('scheduleCronstyle:' + new Date());
-//              }
-//          })
-//         }
-//     })
+function createTimlyWorkCollection(){
+    CreateUpdatedgetAllConsumerTimelyWork().then(res=>{
+        if(res == '1'){
+         CreateUpdatedAllConsumerLinkEventTimelyWork().then(res=>{
+             if(res =='1'){
+                 logger.info('scheduleCronstyle:' + new Date());
+             }
+         })
+        }
+    })
+}
 
 // 配置定时任务
 // function scheduleCronstyle() {
