@@ -370,7 +370,7 @@ function CreateUpdatedAllConsumerLinkEventTimelyWork() {
     })
 }
 
-// 创建活动城市客户数据表定时任务s
+// 创建活动城市客户数据可视化报表定时任务
 function CreateUpdatedgetAllConsumerTimelyWork() {
     return new Promise(resolve => {
         clearAllEventMenberNumTmp().then((resp) => {
@@ -394,21 +394,19 @@ function CreateUpdatedgetAllConsumerTimelyWork() {
     })
 }
 
-// CreateUpdatedAllConsumerLinkEventTimelyWork()
-
 
 // 有问题！
-function createTimlyWorkCollection(){
-    CreateUpdatedgetAllConsumerTimelyWork().then(res=>{
-        if(res == '1'){
-         CreateUpdatedAllConsumerLinkEventTimelyWork().then(res=>{
-             if(res =='1'){
-                 logger.info('scheduleCronstyle:' + new Date());
-             }
-         })
-        }
-    })
-}
+// function createTimlyWorkCollection(){
+//     CreateUpdatedgetAllConsumerTimelyWork().then(res=>{
+//         if(res == '1'){
+//          CreateUpdatedAllConsumerLinkEventTimelyWork().then(res=>{
+//              if(res =='1'){
+//                  logger.info('scheduleCronstyle:' + new Date());
+//              }
+//          })
+//         }
+//     })
+// }
 
 // 配置定时任务
 // function scheduleCronstyle() {
@@ -491,21 +489,17 @@ router.post('/searchConsumerInfoByPhone', function (req, res, next) {
     })
 });
 
-//文件上传
 
-// const upload = multer({ dest: 'uploads/' });
-
-// router.post('/uploadEventExcel',upload.single('file'), (req, res)=>{
-//     var file = req.file;
-//     logger.debug(file)
-//     res.send(file)
-//   })
-// var uploadFolder = '../uploads/';
-
-
-// 上传接口
+// 文件上传接口
 router.post('/uploadEventExcel', upload.single('file'), function (req, res, next) {
     var file = req.file;
     res.send(file)
 });
+
+// 只要看这里
+// 创建活动客户关联活动数据表allconsumerlinkevent
+// CreateUpdatedAllConsumerLinkEventTimelyWork()
+
+// 创建活动城市客户数据可视化报表alleventmembernumtmp
+// CreateUpdatedgetAllConsumerTimelyWork()
 module.exports = router;
