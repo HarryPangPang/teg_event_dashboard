@@ -259,6 +259,9 @@ function filterAllConsumerLinkEvent() {
                     consumer_sex: lonelyData[j].consumer_sex,
                     contact_info1: lonelyData[j].contact_info1,
                     contact_info2: lonelyData[j].contact_info2,
+                    is_useful:lonelyData[j].is_useful,
+                    is_in_sys:lonelyData[j].is_in_sys,
+                    is_need_brandinfo:lonelyData[j].is_need_brandinfom,
                     event_province:[],
                     event_city:[],
                     event_trainer:[],
@@ -271,7 +274,8 @@ function filterAllConsumerLinkEvent() {
                     event_member_num:[],
                     event_others:[],
                     event_applicant:[],
-                    event_apply_dept: []
+                    event_apply_dept: [],
+                    event_date:[]
                 }
                 for (var i = 0; i < newConsumerRowData.event_num.length; i++) {
                     mysqlpool.query(curd_consumer.searchConsumerEvent, newConsumerRowData.event_num[i], function (err, rows, fields) {
@@ -294,6 +298,7 @@ function filterAllConsumerLinkEvent() {
                             newConsumerRowData.event_others.push(rows[0].event_others)
                             newConsumerRowData.event_applicant.push(rows[0].event_applicant)
                             newConsumerRowData.event_apply_dept.push(rows[0].event_apply_dept)
+                            newConsumerRowData.event_date.push(rows[0].event_date)
                             newConsumerRowDataArr.push(newConsumerRowData)
                             newConsumerRowDataArrOnly = [...new Set(newConsumerRowDataArr)]
                             if (newConsumerRowDataArrOnly.length == lonelyData.length) {
@@ -313,9 +318,11 @@ function createNewAllConsumerLinkEvent(reson) {
     return new Promise((resolve) => {
         let resonDate = reson
         let rowsArr = []
-        let tableTitles ="consumer_id,event_numid,consumer_name,consumer_sex,contact_info1,contact_info2,event_province,event_city,event_trainer,event_name,event_location,event_location_type,event_address,event_training_type,event_audience_type,event_member_num,event_others,event_applicant,event_apply_dept"
+
+        logger.debug(resonDate)
+        let tableTitles ="consumer_id,event_numid,consumer_name,consumer_sex,contact_info1,contact_info2,is_useful,is_in_sys,is_need_brandinfo,event_province,event_city,event_trainer,event_name,event_location,event_location_type,event_address,event_training_type,event_audience_type,event_member_num,event_others,event_applicant,event_apply_dept,event_date"
         for (var ii = 0; ii < resonDate.length; ii++) {
-            let insertAllConsumerLinkEvent = `INSERT INTO allconsumerlinkevent (${tableTitles}) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
+            let insertAllConsumerLinkEvent = `INSERT INTO allconsumerlinkevent (${tableTitles}) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
             mysqlpool.query(insertAllConsumerLinkEvent, [
                 resonDate[ii].consumer_id,
                 resonDate[ii].event_numid,
@@ -323,6 +330,9 @@ function createNewAllConsumerLinkEvent(reson) {
                 resonDate[ii].consumer_sex,
                 resonDate[ii].contact_info1,
                 resonDate[ii].contact_info2,
+                resonDate[ii].is_useful,
+                resonDate[ii].is_in_sys,
+                resonDate[ii].is_need_brandinfo,
                 resonDate[ii].event_province.join(',').toString(),
                 resonDate[ii].event_city.join(',').toString(),
                 resonDate[ii].event_trainer.join(',').toString(),
@@ -335,7 +345,9 @@ function createNewAllConsumerLinkEvent(reson) {
                 resonDate[ii].event_member_num.join(',').toString(),
                 resonDate[ii].event_others.join(',').toString(),
                 resonDate[ii].event_applicant.join(',').toString(),
-                resonDate[ii].event_apply_dept.join(',').toString()
+                resonDate[ii].event_apply_dept.join(',').toString(),
+                resonDate[ii].event_date.join(',').toString()
+                
             ],
                 function (err, rows, fields) {
                     if (err) {
@@ -498,7 +510,7 @@ router.post('/uploadEventExcel', upload.single('file'), function (req, res, next
 
 // 只要看这里
 // 创建活动客户关联活动数据表allconsumerlinkevent
-// CreateUpdatedAllConsumerLinkEventTimelyWork()
+CreateUpdatedAllConsumerLinkEventTimelyWork()
 
 // 创建活动城市客户数据可视化报表alleventmembernumtmp
 // CreateUpdatedgetAllConsumerTimelyWork()
